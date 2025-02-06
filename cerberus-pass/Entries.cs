@@ -1,0 +1,25 @@
+namespace cerberus_pass;
+// PascalCase => BegriffstrennungenImmerErsterBuchstabeGroß
+// => Properties, Funktionen / Methods, Classes, Namespaces, Enums
+public class PasswordEntry
+{
+  public string Title { get; set; }
+  public string Login { get; set; }
+  public string Password { get; set; }
+  public string Website { get; set; }
+  public string Note { get; set; }
+
+  public PasswordEntry(
+    string title,
+    string login,
+    string password,
+    string website = "",
+    string note = "")
+  {
+    Title = title;
+    Login = login;
+    Password = password;
+    Website = website;
+    Note = note;
+  }
+}
