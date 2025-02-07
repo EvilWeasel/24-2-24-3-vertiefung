@@ -1,18 +1,5 @@
 ﻿// Main UI-Flow
-using System.Text.RegularExpressions;
 using cerberus_pass;
-
-var pass1 = new PasswordEntry("Steam", "WaldmeisterSD", "P@ssword");
-
-var pass2 = new PasswordEntry("Steam", "WaldmeisterSD", "P@ssword", "https://store.steampowered.com", "Mein cooler Steam-Account");
-
-var pass3 = new PasswordEntry(
-  "GOG",
-  "Toaster",
-  "P@ssword",
-  "https://www.gog.com",
-  "Der geilste Service um alte Videospiele zu erwerben!"
-);
 
 var manager = new PasswordManager();
 
@@ -39,10 +26,18 @@ do
     case "1":
       // Liste ausgeben
       var vault = manager.GetAll();
-      Console.WriteLine(vault);
+      foreach (var item in vault)
+      {
+        Console.WriteLine(item);
+      }
       break;
     case "2":
-      // Passwort anhand ID ausgeben
+      // todo: Exception wenn title nicht existiert
+      // Ein Passwort vollständig ausgeben
+      Console.WriteLine("Welchen Eintrag willst du ansehen? (Title):");
+      var titleToPrint = Console.ReadLine();
+      var entry = manager.GetEntry(titleToPrint);
+      Console.WriteLine(entry + $"\t{entry.Password}");
       break;
     case "3":
       // Erstellen
@@ -58,9 +53,34 @@ do
       break;
     case "4":
       // Update
+      Console.WriteLine("Welchen Eintrag willst du ändern? (Title):");
+      var title_to_change = Console.ReadLine();
+      Console.WriteLine(
+        "Gebe einen neuen Titel für den Eintrag an (Leer um nichts zu ändern):");
+      var new_title = Console.ReadLine();
+      Console.WriteLine(
+        "Gebe einen neuen Login für den Eintrag an (Leer um nichts zu ändern):");
+      var new_login = Console.ReadLine();
+      Console.WriteLine(
+        "Gebe ein neues Passwort für den Eintrag an (Leer um nichts zu ändern):");
+      var new_password = Console.ReadLine();
+      var oldEntry = manager.GetEntry(title_to_change);
+      var updatedEntry = manager.UpdateEntry(title_to_change, new PasswordEntry(
+        String.IsNullOrEmpty(new_title) ? oldEntry.Title : new_title,
+        String.IsNullOrEmpty(new_login) ? oldEntry.Login : new_login,
+        String.IsNullOrEmpty(new_password) ? oldEntry.Password : new_password
+      ));
+      Console.WriteLine($"Eintrag {updatedEntry.Title} wurde erfolgreich aktuallisiert.");
       break;
     case "5":
       // Delete
+      Console.WriteLine("Welchen Eintrag willst du Löschen? (Title):");
+      var titleToDelete = Console.ReadLine();
+      if (manager.DeleteEntry(titleToDelete))
+        Console.WriteLine($"Eintrag {titleToDelete} wurde erfolgreich entfernt");
+      else
+        Console.WriteLine(
+          $"Fehler beim löschen des Eintrags: {titleToDelete} wurde nicht gefunden!");
       break;
     default:
       // Fehler anzeigen -> Eingabe-Hint (1-5)

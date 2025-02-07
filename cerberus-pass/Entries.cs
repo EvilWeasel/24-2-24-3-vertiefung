@@ -22,4 +22,11 @@ public class PasswordEntry
     Website = website;
     Note = note;
   }
+
+  // ToString-Method
+  // Wird z.B. von Console.WriteLine() implizit aufgerufen
+  public override string ToString()
+  {
+    return $"{Title}\t{Website}\t{Login}";
+  }
 }
