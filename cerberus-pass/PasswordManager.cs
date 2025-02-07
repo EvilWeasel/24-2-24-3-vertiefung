@@ -14,13 +14,17 @@ public class PasswordManager
 
   public List<PasswordEntry> GetAll() => vault;
 
-  public PasswordEntry CreateEntry(
+  public PasswordEntry? CreateEntry(
     string title,
     string login,
     string password,
     string website = "",
     string note = "")
   {
+    if (vault.Any(x => x.Title == title))
+    {
+      return null;
+    }
     var newEntry = new PasswordEntry(
       title,
       login,
