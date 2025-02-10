@@ -1,6 +1,14 @@
 ﻿// Main UI-Flow
-using System.Security.Cryptography;
+using System.Runtime.CompilerServices;
 using cerberus_pass;
+
+// temp test für encryption
+var masterPassTest = "buxtehude";
+var secretText = "Hier könnte Ihr Feierabend stehen!";
+var encData = VaultEncryption.Encrypt(secretText, masterPassTest);
+Console.WriteLine(encData);
+
+// test-end
 
 Console.ForegroundColor = ConsoleColor.DarkRed;
 Console.WriteLine("Willkommen zu Cerberus-Pass!");
@@ -33,7 +41,7 @@ if (!File.Exists(masterPassFilePath)) // first start
   }
   // hash masterpass
   var salt = String.Empty;
-  var hashedPassword = HashPassword(userInput, out salt); // salt generieren -> neuer salt
+  var hashedPassword = VaultEncryption.HashPassword(userInput, out salt); // salt generieren -> neuer salt
   // create "masterpass.txt" and write hashed masterpass to it
   // File.Create(masterPassFilePath).Dispose();
   File.WriteAllLines(masterPassFilePath,
@@ -53,7 +61,7 @@ else // every other start
   // hash userinput
   // ursprünglichen salt verwenden
   if (
-    VerifyPassword(userInput, storedHash, storedSalt)
+    VaultEncryption.VerifyPassword(userInput, storedHash, storedSalt)
   )
   {
     Console.WriteLine("Master-Passwort korrekt! Anmeldung erfolgt...");
@@ -164,36 +172,3 @@ do
   Console.ReadKey();
   Console.Clear();
 } while (true);
-
-string HashPassword(string password, out string salt)
-{
-  byte[] saltBytes = new byte[16];
-  using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
-  {
-    rng.GetBytes(saltBytes);
-  }
-  salt = Convert.ToBase64String(saltBytes);
-  var pbkdf2Bytes = Rfc2898DeriveBytes.Pbkdf2(
-    password,
-    saltBytes,
-    10_000,
-    HashAlgorithmName.SHA256,
-    32
-  );
-  return Convert.ToBase64String(pbkdf2Bytes);
-}
-
-bool VerifyPassword(string enteredPassword, string hashedPassword, string salt)
-{
-  byte[] saltBytes = Convert.FromBase64String(salt);
-  var pbkdf2Bytes = Rfc2898DeriveBytes.Pbkdf2(
-    enteredPassword,
-    saltBytes,
-    10_000,
-    HashAlgorithmName.SHA256,
-    32
-  );
-  var enteredHashedPassword = Convert.ToBase64String(pbkdf2Bytes);
-
-  return enteredHashedPassword == hashedPassword;
-}
