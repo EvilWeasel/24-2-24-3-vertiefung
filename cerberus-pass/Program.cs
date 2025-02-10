@@ -1,4 +1,5 @@
 ﻿// Main UI-Flow
+using System.Security.Cryptography;
 using cerberus_pass;
 
 var manager = new PasswordManager();
@@ -7,10 +8,69 @@ Console.ForegroundColor = ConsoleColor.DarkRed;
 Console.WriteLine("Willkommen zu Cerberus-Pass!");
 Console.ResetColor();
 
-// first start: master-password festlegen
+// first start:
+// check if file "masterpass.txt" exists
+const string masterPassFilePath = "masterpass.txt";
+if (!File.Exists(masterPassFilePath)) // first start
+{
+  // does not exist
+  // prompt user for new masterpass
+  Console.WriteLine("Um deinen Passwort-Vault einzurichten, gebe ein Master-Passwort ein.");
+  Console.WriteLine("Dieses Passwort wird zur verschlüsselung aller deiner anderen Passwörter verwendet. Stelle sicher, dass dein Passwort komplex und möglichst lang ist, aber auch einfach einzutippen und merken.");
+  Console.WriteLine("Falls du dieses Passwort vergisst, kommst du nicht mehr an deine gespeicherten Passwörter!");
+  var userInput = Console.ReadLine();
+  //   -> not emtpy string
+  if (String.IsNullOrEmpty(userInput))
+  {
+    Console.WriteLine("Master-Passwort muss gesetzt sein!");
+    Environment.Exit(1);
+  }
+  // confirm input
+  Console.WriteLine("Master-Passwort bestätigen:");
+  var userInputConfirm = Console.ReadLine();
+  if (userInput != userInputConfirm)
+  {
+    Console.WriteLine("Eingegebene Passwörter stimmen nicht überein!");
+    Environment.Exit(2);
+  }
+  // hash masterpass
+  var salt = String.Empty;
+  var hashedPassword = HashPassword(userInput, out salt); // salt generieren -> neuer salt
+  // create "masterpass.txt" and write hashed masterpass to it
+  // File.Create(masterPassFilePath).Dispose();
+  File.WriteAllLines(masterPassFilePath,
+  new[] { hashedPassword, salt });
+}
+else // every other start
+{// "masterpass.txt" exists:
+  // prompt user for master-password
+  Console.WriteLine("Gebe dein Master-Passwort ein:");
+  var userInput = Console.ReadLine();
+  // read set masterpass from file
+  var storedMasterPass = File.ReadAllLines(masterPassFilePath);
+  //   -> not empty string -> delete file, end program
+  var storedHash = storedMasterPass[0];
+  var storedSalt = storedMasterPass[1];
+  //  and compare hashed masterpass from file with hashed user input
+  // hash userinput
+  // ursprünglichen salt verwenden
+  if (
+    VerifyPassword(userInput, storedHash, storedSalt)
+  )
+  {
+    Console.WriteLine("Master-Passwort korrekt! Anmeldung erfolgt...");
+    Thread.Sleep(2000);
+    Console.Clear();
+  }
+  else
+  {
+    Console.WriteLine("Passwort stimmt nicht überein. Programm wird beendet!");
+    Environment.Exit(3);
+  }
+  // if no match -> end program with some error
+}
 
-// every other start: prompt user for master-password
-//  and compare to set master-passwort
+
 
 
 do
@@ -104,3 +164,36 @@ do
   Console.ReadKey();
   Console.Clear();
 } while (true);
+
+string HashPassword(string password, out string salt)
+{
+  byte[] saltBytes = new byte[16];
+  using (RandomNumberGenerator rng = RandomNumberGenerator.Create())
+  {
+    rng.GetBytes(saltBytes);
+  }
+  salt = Convert.ToBase64String(saltBytes);
+  var pbkdf2Bytes = Rfc2898DeriveBytes.Pbkdf2(
+    password,
+    saltBytes,
+    10_000,
+    HashAlgorithmName.SHA256,
+    32
+  );
+  return Convert.ToBase64String(pbkdf2Bytes);
+}
+
+bool VerifyPassword(string enteredPassword, string hashedPassword, string salt)
+{
+  byte[] saltBytes = Convert.FromBase64String(salt);
+  var pbkdf2Bytes = Rfc2898DeriveBytes.Pbkdf2(
+    enteredPassword,
+    saltBytes,
+    10_000,
+    HashAlgorithmName.SHA256,
+    32
+  );
+  var enteredHashedPassword = Convert.ToBase64String(pbkdf2Bytes);
+
+  return enteredHashedPassword == hashedPassword;
+}
