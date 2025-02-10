@@ -7,6 +7,12 @@ Console.ForegroundColor = ConsoleColor.DarkRed;
 Console.WriteLine("Willkommen zu Cerberus-Pass!");
 Console.ResetColor();
 
+// first start: master-password festlegen
+
+// every other start: prompt user for master-password
+//  and compare to set master-passwort
+
+
 do
 {
   Console.WriteLine("Wähle was du tun willst:");
