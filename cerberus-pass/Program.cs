@@ -2,8 +2,6 @@
 using System.Security.Cryptography;
 using cerberus_pass;
 
-var manager = new PasswordManager();
-
 Console.ForegroundColor = ConsoleColor.DarkRed;
 Console.WriteLine("Willkommen zu Cerberus-Pass!");
 Console.ResetColor();
@@ -70,8 +68,10 @@ else // every other start
   // if no match -> end program with some error
 }
 
+// Load PasswordEntries from file
+//manager.LoadFromFile();
 
-
+var manager = new PasswordManager();
 
 do
 {
