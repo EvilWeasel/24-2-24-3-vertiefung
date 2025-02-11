@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cerberus-pass", "cerberus-pass\cerberus-pass.csproj", "{4506520C-8F66-44B9-B165-E2CD4F2E5111}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "polymorphism-logging", "polymorphism-logging\polymorphism-logging.csproj", "{4FB1996F-6809-467A-A75F-D7016A1BF4B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{4506520C-8F66-44B9-B165-E2CD4F2E5111}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4506520C-8F66-44B9-B165-E2CD4F2E5111}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4506520C-8F66-44B9-B165-E2CD4F2E5111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FB1996F-6809-467A-A75F-D7016A1BF4B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FB1996F-6809-467A-A75F-D7016A1BF4B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FB1996F-6809-467A-A75F-D7016A1BF4B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FB1996F-6809-467A-A75F-D7016A1BF4B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
