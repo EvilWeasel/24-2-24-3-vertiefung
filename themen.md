@@ -10,9 +10,9 @@
   - [ ] Try-Catch
   - [ ] *Optional*: Alternative Error-Handling Methoden, wie Option oder Result
 - [ ] **Call by Value** VS **Call by Reference**
-- [ ] Polymorphismus
-  - [ ] Vererbung in der Praxis
-  - [ ] Limitierung von Vererbung
+- [] Polymorphismus
+  - [x] Vererbung in der Praxis
+  - [x] Limitierung von Vererbung
     - [ ] "Komposition over Inheritance"
     - [ ] Interfaces
 - [ ] JSON -> Syntax-Erläuterung und Beispiel

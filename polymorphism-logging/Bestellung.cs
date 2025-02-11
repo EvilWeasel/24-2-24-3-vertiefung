@@ -10,6 +10,7 @@ public class Bestellung
   public Logger Logger { get; set; }
 
   public Bestellung(
+    Logger logger,
     int id,
     string kunde,
     string artikel,
@@ -22,7 +23,7 @@ public class Bestellung
     Artikel = artikel;
     Anzahl = anzahl;
     Preis = preis;
-    Logger = new();
+    Logger = logger;
   }
 
   public void ProcessOrder()
@@ -40,7 +41,7 @@ public class Bestellung
 
   public void ShipOrder()
   {
-    Logger.Logprefix = "LOG";
+    Logger.Originprefix = "ShipOrder -> " + Logger.Originprefix;
     Logger.Log($"Preparing to ship OrderID {Id}");
     Thread.Sleep(500);
     Logger.Log("Preparing..."); // Log-Nachricht
