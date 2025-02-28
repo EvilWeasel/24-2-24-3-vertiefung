@@ -8,7 +8,7 @@ fileLoggers.Add(new TextFileLogger("Kunde 2"));
 fileLoggers.Add(new JSONFileLogger("Kunde 3"));
 foreach (var log in fileLoggers)
 {
-  File.Create(log.FilePath).Dispose();
+    File.Create(log.FilePath).Dispose();
 }
 
 
