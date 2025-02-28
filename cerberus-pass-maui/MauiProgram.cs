@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using cerberus_pass_maui.ViewModel;
+using Microsoft.Extensions.Logging;
 
 namespace cerberus_pass_maui;
 
@@ -18,6 +19,8 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
+
+        builder.Services.AddSingleton<MainPageViewModel>();
 
         return builder.Build();
     }

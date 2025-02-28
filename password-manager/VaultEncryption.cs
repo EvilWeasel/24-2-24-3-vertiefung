@@ -4,7 +4,11 @@ using System.Text;
 namespace password_manager;
 public static class VaultEncryption
 {
-    public static byte[] DeriveKeyFromPassword(string password, byte[] salt, int keysize = 32, int iterations = 10_000)
+    public static byte[] DeriveKeyFromPassword(
+        string password,
+        byte[] salt,
+        int keysize = 32,
+        int iterations = 10_000)
     {
         var pbkdf2Bytes = Rfc2898DeriveBytes.Pbkdf2(
           password,
@@ -34,7 +38,10 @@ public static class VaultEncryption
         return Convert.ToBase64String(pbkdf2Bytes);
     }
 
-    public static bool VerifyPassword(string enteredPassword, string hashedPassword, string salt)
+    public static bool VerifyPassword(
+        string enteredPassword,
+        string hashedPassword,
+        string salt)
     {
         byte[] saltBytes = Convert.FromBase64String(salt);
         var pbkdf2Bytes = Rfc2898DeriveBytes.Pbkdf2(

@@ -9,6 +9,7 @@ public class PasswordEntry
     public string Website { get; set; }
     public string Note { get; set; }
 
+    public PasswordEntry() { }
     public PasswordEntry(
       string title,
       string login,
@@ -36,6 +37,7 @@ public class PasswordEntrySummary
     public string Login { get; set; }
     public string Website { get; set; }
     public string Note { get; set; }
+    public PasswordEntrySummary() { }
 
     public PasswordEntrySummary(string title, string login, string website, string note)
     {

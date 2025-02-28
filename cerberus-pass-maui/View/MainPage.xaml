@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cerberus_pass_maui.MainPage"
+             xmlns:manager="clr-namespace:password_manager;assembly=password-manager"
+             xmlns:viewmodel="clr-namespace:cerberus_pass_maui.ViewModel"
+             x:DataType="viewmodel:MainPageViewModel"
+             Title="{Binding Title}">
+
+
+    <Grid
+            Padding="30,0"
+            ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <FlexLayout
+                HeightRequest="50"
+                Grid.ColumnSpan="2">
+            <Button
+                    ImageSource="mdi_compass.png"
+                    WidthRequest="20"
+                    Margin="0,0,5,0"
+                    IsEnabled="False"/>
+            <SearchBar
+                    Placeholder="Search"
+                    FlexLayout.Grow="1"/>
+            <Button
+                    ImageSource="mdi_plus.png"
+                    WidthRequest="20"
+                    Margin="5,0,0,0"
+                    Command="{Binding AddEntryCommand}"/>
+        </FlexLayout>
+        <Border Grid.Column="0" Grid.Row="1">
+            <CollectionView SelectionMode="Single"
+                    ItemsSource="{Binding PasswordEntries}">
+                <!--<CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type manager:PasswordEntrySummary}">
+                            <manager:PasswordEntrySummary
+                                Title="Steam"
+                                Login="evilweasel"
+                                Website="https://store.steampowered.com"
+                                Note="Test" />
+                            <manager:PasswordEntrySummary
+                                Title="GOG"
+                                Login="evilweasel"
+                                Website="https://gog.com"
+                                Note="Test2" />
+                        </x:Array>
+                    </CollectionView.ItemsSource>-->
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="manager:PasswordEntry">
+                        <Border Stroke="AliceBlue">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Title}"/>
+                                <Label Text="{Binding Login}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1">
+            <StackLayout Padding="10">
+                <Label Text="sdklfjlksdjf 2"/>
+            </StackLayout>
+        </Border>
+    </Grid>
+
+</ContentPage>
