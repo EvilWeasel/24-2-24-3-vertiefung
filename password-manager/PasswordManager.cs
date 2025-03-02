@@ -6,7 +6,19 @@ public class PasswordManager
 {
     private List<PasswordEntry> vault = [];
     private const string vaultFilePath = "vault.cerberus";
-
+    private static PasswordManager? instance;
+    public static PasswordManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new PasswordManager();
+            }
+            return instance;
+        }
+    }
+    private PasswordManager() { }
 
     public IEnumerable<PasswordEntrySummary> GetAll() => vault.Select(e => (PasswordEntrySummary)e);
 

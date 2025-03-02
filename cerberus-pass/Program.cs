@@ -1,7 +1,6 @@
 ﻿// Main UI-Flow
 using cerberus_pass;
 
-
 PasswordManager manager = new();
 
 Console.Clear();
@@ -47,7 +46,8 @@ else // every other start
 {// "masterpass.txt" exists:
  // prompt user for master-password
     Console.WriteLine("Gebe dein Master-Passwort ein:");
-    var userInput = Console.ReadLine();
+    string userInput = Console.ReadLine() ??
+        throw new ArgumentNullException(nameof(userInput));
     // read set masterpass from file
     var storedMasterPass = File.ReadAllLines(masterPassFilePath);
     //   -> not empty string -> delete file, end program

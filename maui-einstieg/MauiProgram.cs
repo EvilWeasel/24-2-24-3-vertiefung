@@ -1,29 +1,25 @@
-﻿using cerberus_pass_maui.ViewModel;
-using Microsoft.Extensions.Logging;
-using password_manager;
+﻿using Microsoft.Extensions.Logging;
 
-namespace cerberus_pass_maui;
+namespace maui_einstieg;
 
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
+        // Builder Pattern, siehe https://refactoring.guru/design-patterns/builder
         var builder = MauiApp.CreateBuilder();
         builder
-            .UseMauiApp<App>()
+            .UseMauiApp<App>() // App.xaml als Einstiegspunkt für MAUI App
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-
+        // Compiler-Anweisung: Wenn DEBUG-Build, dann füge Logging-Service hinzu
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-        // ViewModels
-        builder.Services.AddSingleton<MainPageViewModel>();
-        // Services
-        builder.Services.AddSingleton<PasswordManager>();
+        // Baue und starte die MAUI-App
         return builder.Build();
     }
 }

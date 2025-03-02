@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="maui_einstieg.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:maui_einstieg"
+    Shell.FlyoutBehavior="Flyout"
+    Title="maui_einstieg">
+    <!-- 
+        Shell ist das Top-Level unserer GUI-Anwendung
+        Hier wird Navigations-Logik definiert und das Start-Fenster
+        ContentTemplate ist eine MAUI-Page (Seite)
+        Title ist eine Eigenschaft, definiert auf "ContentPage", welche die
+            Basisklasse für jede Inhaltsseite in Maui ist.
+            Mehr dazu in "MainPage.xaml.cs"
+        Navigation in MAUI wird über "Routes" (Routen) defininiert,
+            ähnlich wie URL-Navigation im Browser.
+    -->
+        <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+</Shell>

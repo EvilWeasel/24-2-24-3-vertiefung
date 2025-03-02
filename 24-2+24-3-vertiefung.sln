@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "password-manager", "passwor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cerberus-pass-maui", "cerberus-pass-maui\cerberus-pass-maui.csproj", "{5A79E2C4-2B68-42A0-B0C9-4B99E912E3F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-einstieg", "maui-einstieg\maui-einstieg.csproj", "{0E0A98E8-711C-451D-A3DF-ABF782406ED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-minimal", "maui-minimal\maui-minimal.csproj", "{6EF4C675-3B67-4271-9954-627F4EF96A91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,8 +73,35 @@ Global
 		{5A79E2C4-2B68-42A0-B0C9-4B99E912E3F2}.Release|x64.Build.0 = Release|Any CPU
 		{5A79E2C4-2B68-42A0-B0C9-4B99E912E3F2}.Release|x86.ActiveCfg = Release|Any CPU
 		{5A79E2C4-2B68-42A0-B0C9-4B99E912E3F2}.Release|x86.Build.0 = Release|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Debug|x64.Build.0 = Debug|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Debug|x86.Build.0 = Debug|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Release|x64.ActiveCfg = Release|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Release|x64.Build.0 = Release|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E0A98E8-711C-451D-A3DF-ABF782406ED4}.Release|x86.Build.0 = Release|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Debug|x64.Build.0 = Debug|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Debug|x86.Build.0 = Debug|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Release|x64.ActiveCfg = Release|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Release|x64.Build.0 = Release|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Release|x86.ActiveCfg = Release|Any CPU
+		{6EF4C675-3B67-4271-9954-627F4EF96A91}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1CF372B-2CDB-4FB2-BCC1-7E95A2F5FC85}
 	EndGlobalSection
 EndGlobal
