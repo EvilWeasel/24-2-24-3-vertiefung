@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "polymorphism-logging", "pol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-default-template", "maui-default-template\maui-default-template.csproj", "{E01DBA0F-8B9A-4088-9F3D-EEE685E74F1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-simple", "maui-simple\maui-simple.csproj", "{58FA3B53-7004-4E99-AD22-7C09B3671EE0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,11 @@ Global
 		{E01DBA0F-8B9A-4088-9F3D-EEE685E74F1B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{E01DBA0F-8B9A-4088-9F3D-EEE685E74F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E01DBA0F-8B9A-4088-9F3D-EEE685E74F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58FA3B53-7004-4E99-AD22-7C09B3671EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58FA3B53-7004-4E99-AD22-7C09B3671EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58FA3B53-7004-4E99-AD22-7C09B3671EE0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{58FA3B53-7004-4E99-AD22-7C09B3671EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58FA3B53-7004-4E99-AD22-7C09B3671EE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
