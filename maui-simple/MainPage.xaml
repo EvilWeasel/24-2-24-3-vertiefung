@@ -1,30 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="maui_simple.MainPage">
+             x:Class="maui_simple.MainPage"
+             xmlns:local="clr-namespace:maui_simple"
+             x:DataType="local:MainPage">
 
-    <Grid>
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Image
             Source="dotnet_bot.png"
-            Aspect="AspectFit" />
+            HeightRequest="200"
+            Aspect="AspectFit"
+            Grid.ColumnSpan="2"
+            Grid.Row="0"/>
         <Entry 
-            Placeholder="Einkaufen gehen..."/>
+            Text="{Binding NewTodo}"
+            Placeholder="Einkaufen gehen..."
+            Grid.Column="0"
+            Grid.Row="1"/>
         <Button
-            Text="Add" />
-        <CollectionView>
-            <CollectionView.ItemsSource>
+            Clicked="Button_Clicked"
+            Text="Add"
+            Grid.Column="1"
+            Grid.Row="1"
+            Margin="10,0,0,0"/>
+        <CollectionView
+            ItemsSource="{Binding TodoItems}"
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
+            Margin="0,15">
+            <!--<CollectionView.ItemsSource>
                 <x:Array Type="{x:Type x:String}">
                     <x:String>Einkaufen gehen</x:String>
                     <x:String>Oma besuchen</x:String>
                     <x:String>Berliner essen</x:String>
                 </x:Array>
-            </CollectionView.ItemsSource>
+            </CollectionView.ItemsSource>-->
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="3"
+                                   Orientation="Vertical"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type x:String}">
-                    <Border
-                        Stroke="Black">
-                        <Label Text="{Binding .}" />
-                    </Border>
+                    <VerticalStackLayout>
+                        <Border
+                            Stroke="{StaticResource PrimaryDark}"
+                            StrokeThickness="4"
+                            StrokeShape="RoundRectangle 7">
+                            <Label Text="{Binding .}"
+                               FontSize="32"
+                               Padding="20, 5"/>
+                        </Border>
+                    </VerticalStackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
