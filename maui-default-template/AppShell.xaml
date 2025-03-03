@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="maui_default_template.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:maui_default_template"
+    Shell.FlyoutBehavior="Flyout"
+    Title="MAUI-Buxtehude">
+    <!-- 
+        Shell ist das Top-Level unserer GUI-Anwendung.
+        Es enthält die Hauptnavigation und das Layout.
+        Eine "ContentPage" ist eine MAUI-Seite, welche Mehrere 
+            UI-Elemente zusammenfasst
+        Title ist eine Eigenschaft auf jeder "ContentPage" (in unserem Fall MainPage)
+            Mehr dazu in MainPage.xaml.cs
+        Navigation in Maui wird über "Routes" (Routen) definiert,
+            ähnlich wie URL-Navigation im Browser.
+    -->
+    <ShellContent
+        Title="Home-Hamster"
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" />
+
+</Shell>
