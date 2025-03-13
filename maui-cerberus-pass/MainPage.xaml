@@ -5,36 +5,44 @@
              xmlns:local="clr-namespace:maui_cerberus_pass"
              x:DataType="local:MainPage"
              Title="Meine Passwörter">
-
-    <VerticalStackLayout
-        Margin="15">
+    <Grid
+        Margin="15,15,5,15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <SearchBar Placeholder="github"
                    FontSize="Small"
                    TextChanged="SearchBar_TextChanged"/>
-
-        <CollectionView ItemsSource="{Binding Entries}"
-                        Margin="0, 10, 0, 0">
+        <CollectionView ItemsSource="{Binding FilteredEntries}"
+                        Margin="0, 10, 0, 0"
+                        Grid.Row="1">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout Orientation="Vertical"
-                                   ItemSpacing="2"/>
+                                       ItemSpacing="2"/>
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type local:PasswordEntry}">
-                    <Border
-                        Stroke="{StaticResource PrimaryDark}"
-                        StrokeThickness="4"
-                        StrokeShape="RoundRectangle 7">
-                        <VerticalStackLayout Padding="10">
-                            <Label Text="{Binding Title}"
-                                   FontSize="Small"
-                                   TextColor="LightGray" />
-                            <Label Text="{Binding Login}"
-                                   FontSize="Medium" />
-                        </VerticalStackLayout>
-                    </Border>
+                    <Grid>
+                        <Border
+                            Stroke="{StaticResource PrimaryDark}"
+                            StrokeThickness="4"
+                            StrokeShape="RoundRectangle 7"
+                            Margin="0,0,15,0">
+                            <VerticalStackLayout Padding="10">
+                                <Label Text="{Binding Title}"
+                                       FontSize="Small"
+                                       TextColor="LightGray" />
+                                <Label Text="{Binding Login}"
+                                       FontSize="Medium" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </VerticalStackLayout>
 
+
+    </Grid>
 </ContentPage>
