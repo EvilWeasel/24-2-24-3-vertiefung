@@ -608,7 +608,7 @@
       "containerId": null,
       "originalText": "Kompiler übersetzt\nCode von Programmier-\nSprache in Maschinen-\nAnweisungen für die \nCPU",
       "lineHeight": 1.25,
-      "baseline": 81
+      "baseline": 82
     },
     {
       "type": "arrow",
@@ -2339,7 +2339,7 @@
       "containerId": null,
       "originalText": ".exe\nELF",
       "lineHeight": 1.25,
-      "baseline": 57
+      "baseline": 56
     },
     {
       "type": "rectangle",
@@ -3025,6 +3025,42 @@
       "updated": 1738831530961,
       "link": null,
       "locked": false
+    },
+    {
+      "id": "BggT8AIkJ6lqY_U8-fgk9",
+      "type": "text",
+      "x": 800,
+      "y": -160,
+      "width": 677.12431723795,
+      "height": 99.19211139291247,
+      "angle": 0,
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "transparent",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "frameId": null,
+      "roundness": null,
+      "seed": 1688264348,
+      "version": 35,
+      "versionNonce": 489605532,
+      "isDeleted": false,
+      "boundElements": null,
+      "updated": 1741263632074,
+      "link": null,
+      "locked": false,
+      "text": "It hurts when IP",
+      "fontSize": 79.35368911432997,
+      "fontFamily": 1,
+      "textAlign": "left",
+      "verticalAlign": "top",
+      "baseline": 69,
+      "containerId": null,
+      "originalText": "It hurts when IP",
+      "lineHeight": 1.25
     }
   ],
   "appState": {
