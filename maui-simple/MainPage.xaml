@@ -42,6 +42,10 @@
                     <x:String>Einkaufen gehen</x:String>
                     <x:String>Oma besuchen</x:String>
                     <x:String>Berliner essen</x:String>
+                    <x:PasswordEntry>
+                        <x:Title>Github</x:Title>
+                        <x:Username>EvilWeasel</x:Username>
+                    </x:PasswordEntry>
                 </x:Array>
             </CollectionView.ItemsSource>-->
             <CollectionView.ItemsLayout>
