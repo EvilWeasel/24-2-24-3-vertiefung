@@ -9,7 +9,8 @@
     <VerticalStackLayout
         Margin="15">
         <SearchBar Placeholder="github"
-                   FontSize="Small"/>
+                   FontSize="Small"
+                   TextChanged="SearchBar_TextChanged"/>
 
         <CollectionView ItemsSource="{Binding Entries}"
                         Margin="0, 10, 0, 0">

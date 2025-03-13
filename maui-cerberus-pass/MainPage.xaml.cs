@@ -30,4 +30,15 @@ public partial class MainPage : ContentPage
             "P@ssword"
         ));
     }
+
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var searchBar = (SearchBar)sender;
+        var searchText = searchBar.Text!;
+
+        // var filteredEntries = 
+        //     new ObservableCollection<PasswordEntry>(
+        //         Entries.Where(entry => entry.Title.Contains(searchText)));
+        // Entries = filteredEntries;
+    }
 }
