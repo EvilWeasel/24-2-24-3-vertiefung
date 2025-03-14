@@ -4,113 +4,92 @@ namespace password_manager_toolkit;
 
 public class PasswordManager
 {
-  private List<PasswordEntry>? vault;
-  private const string vaultFilePath = "vault.cerberus";
-  public List<PasswordEntry> GetAll() => vault;
-
-  public PasswordEntry? CreateEntry(
-    string masterPass,
-    string title,
-    string login,
-    string password,
-    string website = "",
-    string note = "")
-  {
-    if (vault.Any(x => x.Title == title))
+    private List<PasswordEntry> vault;
+    private const string vaultFilePath = "vault.cerberus";
+    public PasswordManager()
     {
-      return null;
+        vault = [];
     }
-    var newEntry = new PasswordEntry(
-      title,
-      login,
-      password,
-      website,
-      note
-    );
-    vault.Add(newEntry);
-    SaveVault(masterPass);
-    return newEntry;
-  }
+    public List<PasswordEntry> GetAll() => vault;
 
-  // GetEntry
-  public PasswordEntry GetEntry(string title) =>
-    vault.Find(x => x.Title == title);
-
-
-  // UpdateEntry
-  public PasswordEntry UpdateEntry(string masterPass, string titleToChange, PasswordEntry newEntry)
-  {
-    var indexToUpdate = vault.FindIndex(
-      x => x.Title == titleToChange);
-    vault[indexToUpdate] = newEntry;
-    SaveVault(masterPass);
-    return vault[indexToUpdate];
-
-    // var entryToChange = vault.Find(x => x.Title == titleToChange);
-    // entryToChange = newEntry;
-  }
-
-  // DeleteEntry
-  public bool DeleteEntry(string masterPass, string titleToDelete)
-  {
-    var success = vault.RemoveAll(x => x.Title == titleToDelete) > 0;
-    if (success)
-      SaveVault(masterPass);
-    return success;
-  }
-
-  /*
-  public bool DeleteEntry(string titleToDelete)
-  {
-    var deleteCount = 0;
-    for (int i = 0; i > vault.Count; i++)
+    public PasswordEntry? CreateEntry(
+      string masterPass,
+      string title,
+      string login,
+      string password,
+      string website = "",
+      string note = "")
     {
-      if (vault[i].Title == titleToDelete)
-      {
-        vault.Remove(vault[i]);
-        deleteCount++;
-      }
+        if (vault.Any(x => x.Title == title))
+        {
+            return null;
+        }
+        var newEntry = new PasswordEntry(
+          title,
+          login,
+          password,
+          website,
+          note
+        );
+        vault.Add(newEntry);
+        SaveVault(masterPass);
+        return newEntry;
     }
-    if (deleteCount > 0)
-    {
-      return true;
-    }
-    else
-    {
-      return false;
-    }
-  } */
 
-  // Save to File
-  // Wer callt diese Funktion?
-  private void SaveVault(string masterPass)
-  {
-    var json = JsonSerializer.Serialize(vault);
-    var encryptedJson = VaultEncryption.Encrypt(json, masterPass);
-    File.WriteAllText(vaultFilePath, encryptedJson);
-  }
+    // GetEntry
+    public PasswordEntry? GetEntry(string title) =>
+      vault.Find(x => x.Title == title);
 
-  // Load from File
-  // Wer callt diese Funktion?
-  public void LoadVault(string masterPass)
-  {
-    var fileContent = File.Exists(vaultFilePath) ?
-      File.ReadAllText(vaultFilePath) :
-      "";
-    if (String.IsNullOrEmpty(fileContent))
+
+    // UpdateEntry
+    public PasswordEntry? UpdateEntry(
+        string masterPass,
+        string titleToChange,
+        PasswordEntry newEntry)
     {
-      File.Create(vaultFilePath).Dispose();
-      vault = [];
-      return;
+        var indexToUpdate = vault.FindIndex(
+          x => x.Title == titleToChange);
+        if (indexToUpdate == -1)
+            return null;
+        vault[indexToUpdate] = newEntry;
+        SaveVault(masterPass);
+        return vault[indexToUpdate];
     }
-    var encryptedJson = fileContent;
-    var jsonPlain = VaultEncryption.Decrypt(encryptedJson, masterPass);
-    vault = JsonSerializer.
-      Deserialize<List<PasswordEntry>>(jsonPlain)
-        ?? [];
-    // ?? => Null-Coalescing Operator
-    // x = entweder ?? oder
-    // ==> wenn "entweder" == null, dann ist x = "oder"
-    // decrypt
-  }
+
+    // DeleteEntry
+    public bool DeleteEntry(string masterPass, string titleToDelete)
+    {
+        var success = vault.RemoveAll(x => x.Title == titleToDelete) > 0;
+        if (success)
+            SaveVault(masterPass);
+        return success;
+    }
+    private void SaveVault(string masterPass)
+    {
+        var json = JsonSerializer.Serialize(vault);
+        var encryptedJson = VaultEncryption.Encrypt(json, masterPass);
+        File.WriteAllText(vaultFilePath, encryptedJson);
+    }
+
+    public void LoadVault(string masterPass)
+    {
+        var encryptedJson = File.Exists(vaultFilePath) ?
+          File.ReadAllText(vaultFilePath) :
+          "";
+        if (String.IsNullOrEmpty(encryptedJson))
+        {
+            File.Create(vaultFilePath).Dispose();
+            return;
+        }
+        // todo: masspass check
+
+        var jsonPlain = VaultEncryption.Decrypt(encryptedJson, masterPass);
+        vault = JsonSerializer.
+          Deserialize<List<PasswordEntry>>(jsonPlain)
+            ?? throw new FileLoadException("Malformed vault data! Could not parse contents!");
+        // ?? => Null-Coalescing Operator
+        // x = entweder ?? oder
+        // ==> wenn "entweder" == null, dann ist x = "oder"
+        // decrypt
+    }
 }

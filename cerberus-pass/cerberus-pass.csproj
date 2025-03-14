@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\password-manager-toolkit\password-manager-toolkit.csproj" />
+  </ItemGroup>
+
 </Project>
