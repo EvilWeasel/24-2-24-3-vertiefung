@@ -24,6 +24,9 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type local:PasswordEntry}">
                     <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Grid.GestureRecognizers>
                         <Border
                             Stroke="{StaticResource PrimaryDark}"
                             StrokeThickness="4"
@@ -42,7 +45,6 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
 
     </Grid>
 </ContentPage>

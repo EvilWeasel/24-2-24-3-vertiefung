@@ -68,4 +68,10 @@
 	  <ProjectReference Include="..\password-manager-toolkit\password-manager-toolkit.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="DetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
