@@ -16,7 +16,7 @@
             <Label Text="Nachname" />
             <Entry Placeholder="Mustermann" Text="{Binding MyPerson.LastName}"/>
             <!-- Output -->
-            <Label Text="{Binding MyPerson.FirstName}"/>
+            <Label Text="{Binding MyPerson.FirstName}" x:Name="MyLabel"/>
             <Label Text="{Binding MyPerson.LastName}"/>
             <Button Text="Person hinzufügen" Clicked="Button_Clicked" />
         </VerticalStackLayout>

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 
 namespace maui_propertychanged; // File-Scoped Namespace
 public partial class MainPage : ContentPage
@@ -69,6 +70,7 @@ public class Person : INotifyPropertyChanged
         {
             lastName = value;
             OnPropertyChanged();
+            PropertyChanged(this, new new PropertyChangedEventArgs("LastName"));
         }
     }
     public Person(string firstName, string lastName)
