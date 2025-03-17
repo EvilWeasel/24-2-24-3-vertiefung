@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-cerberus-pass", "maui-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "password-manager-toolkit", "password-manager-toolkit\password-manager-toolkit.csproj", "{55A40C2B-48E9-439B-8AF6-5F6EE392606B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-propertychanged", "maui-propertychanged\maui-propertychanged.csproj", "{FFD24CB9-EB47-4C20-815E-268E87971592}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{55A40C2B-48E9-439B-8AF6-5F6EE392606B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55A40C2B-48E9-439B-8AF6-5F6EE392606B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55A40C2B-48E9-439B-8AF6-5F6EE392606B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFD24CB9-EB47-4C20-815E-268E87971592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD24CB9-EB47-4C20-815E-268E87971592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD24CB9-EB47-4C20-815E-268E87971592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD24CB9-EB47-4C20-815E-268E87971592}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
