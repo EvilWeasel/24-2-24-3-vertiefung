@@ -25,7 +25,8 @@
                 <DataTemplate x:DataType="{x:Type local:PasswordEntry}">
                     <Grid>
                         <Grid.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                                  CommandParameter="{Binding .}"/>
                         </Grid.GestureRecognizers>
                         <Border
                             Stroke="{StaticResource PrimaryDark}"

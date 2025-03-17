@@ -54,10 +54,13 @@ public partial class MainPage : ContentPage
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync($"//DetailsPage", true,
+        if (e.Parameter is PasswordEntry selectedEntry)
+        {
+            await Shell.Current.GoToAsync($"//DetailsPage", true,
             new Dictionary<string, object>
             {
-                {"Entry",  new PasswordEntry("test","test","test")}
+                {"Entry",  selectedEntry}
             });
+        }
     }
 }

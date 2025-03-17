@@ -5,11 +5,37 @@
              xmlns:local="clr-namespace:maui_cerberus_pass"
              x:DataType="local:DetailsPage"
              Title="DetailsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding Entry.Title}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Button Text="Go Back" Clicked="Button_Clicked" />
-    </VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <VerticalStackLayout Grid.Row="0">
+            <Label Text="Title"/>
+            <Entry Text="{Binding Entry.Title}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="1">
+            <Label Text="Login"/>
+            <Entry Text="{Binding Entry.Login}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="2">
+            <Label Text="Password"/>
+            <Entry Text="{Binding Entry.Password}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="3">
+            <Label Text="Website"/>
+            <Entry Text="{Binding Entry.Website}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="4">
+            <Label Text="Note"/>
+            <Entry Text="{Binding Entry.Note}"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="5">
+            <Button Text="Go Back" Clicked="Button_Clicked" />
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
