@@ -28,11 +28,11 @@ class Fighter
 
     // Events
     // Event für Angriffe
-    public event Action<string, string, int> OnAttack;
+    public event Action<string, string, int>? OnAttack;
     // Event für kritische Treffer
-    public event EventHandler<CriticalHitEventArgs> OnCriticalHit;
+    public event EventHandler<CriticalHitEventArgs>? OnCriticalHit;
     // Event für Niederlage
-    public event EventHandler<DefeatedEventArgs> OnDefeated;
+    public event EventHandler<DefeatedEventArgs>? OnDefeated;
 
     public Fighter(string name)
     {

@@ -22,11 +22,10 @@ class Commentator
         $"👊 {attacker} trifft {defender} für {damage} Schaden!");
 
     public void OnCriticalHit(
-        string attacker,
-        int damage)
+        object? sender, CriticalHitEventArgs e)
         => Console.WriteLine(
-            $"💥 KRITISCHER TREFFER!!! Der nächste Angriff von {attacker} verursacht {damage} Schaden!");
+            $"💥 KRITISCHER TREFFER!!! Der nächste Angriff von {e.Attacker} verursacht {e.Damage} Schaden!");
 
-    public void OnDefeated(string loser)
-        => Console.WriteLine($"💀 {loser} geht zu Boden!");
+    public void OnDefeated(object? sender, DefeatedEventArgs e)
+        => Console.WriteLine($"💀 {e.Looser} geht zu Boden!");
 }
