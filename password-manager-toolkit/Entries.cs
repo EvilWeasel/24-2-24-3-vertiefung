@@ -1,4 +1,4 @@
-namespace cerberus_pass;
+namespace password_manager_toolkit;
 // PascalCase => BegriffstrennungenImmerErsterBuchstabeGroß
 // => Properties, Funktionen / Methods, Classes, Namespaces, Enums
 public class PasswordEntry

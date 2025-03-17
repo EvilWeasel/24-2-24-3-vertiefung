@@ -1,33 +1,63 @@
 ﻿
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace maui_cerberus_pass;
 public partial class MainPage : ContentPage
 {
-    public ObservableCollection<PasswordEntry> Entries { get; set; } = [];
+    private readonly ObservableCollection<PasswordEntry> entries = [];
+    public ObservableCollection<PasswordEntry> FilteredEntries { get; set; } = [];
     public MainPage()
     {
         InitializeComponent();
         BindingContext = this;
-        Entries.Add(new PasswordEntry(
+        entries.Add(new PasswordEntry(
             "github-privat",
             "evilweasel",
             "P@ssword"
         ));
-        Entries.Add(new PasswordEntry(
+        entries.Add(new PasswordEntry(
             "github-arbeit",
             "boilerplatesharp",
             "P@ssword"
         ));
-        Entries.Add(new PasswordEntry(
+        entries.Add(new PasswordEntry(
             "steam",
             "evilweasel",
             "P@ssword"
         ));
-        Entries.Add(new PasswordEntry(
+        entries.Add(new PasswordEntry(
             "gog",
             "waldmeistersd",
             "P@ssword"
         ));
+        // FilteredEntries = new ObservableCollection<PasswordEntry>(Entries);
+        foreach (var entry in entries)
+        {
+            FilteredEntries.Add(entry);
+        }
+    }
+
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        var searchBar = (SearchBar)sender;
+        var searchText = searchBar.Text!;
+
+        FilteredEntries.Clear();
+        foreach (var entry in entries)
+        {
+            if (entry.Title.Contains(searchText,
+                    StringComparison.InvariantCultureIgnoreCase))
+                FilteredEntries.Add(entry);
+        }
+    }
+
+    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        await Shell.Current.GoToAsync($"//DetailsPage", true,
+            new Dictionary<string, object>
+            {
+                {"Entry",  new PasswordEntry("test","test","test")}
+            });
     }
 }
