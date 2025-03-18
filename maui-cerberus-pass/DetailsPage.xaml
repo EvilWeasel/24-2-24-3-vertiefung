@@ -5,37 +5,53 @@
              xmlns:local="clr-namespace:maui_cerberus_pass"
              x:DataType="local:DetailsPage"
              Title="DetailsPage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <VerticalStackLayout Grid.Row="0">
-            <Label Text="Title"/>
-            <Entry Text="{Binding Entry.Title}"/>
-        </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="1">
-            <Label Text="Login"/>
-            <Entry Text="{Binding Entry.Login}"/>
-        </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="2">
-            <Label Text="Password"/>
-            <Entry Text="{Binding Entry.Password}"/>
-        </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="3">
-            <Label Text="Website"/>
-            <Entry Text="{Binding Entry.Website}"/>
-        </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="4">
-            <Label Text="Note"/>
-            <Entry Text="{Binding Entry.Note}"/>
-        </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="5">
-            <Button Text="Go Back" Clicked="Button_Clicked" />
-        </VerticalStackLayout>
-    </Grid>
+    <ScrollView>
+        <Grid Padding="10" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Grid.Row="0">
+                <Label Text="Title"/>
+                <Entry Text="{Binding Entry.Title}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="1">
+                <Label Text="Login"/>
+                <Entry Text="{Binding Entry.Login}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2">
+                <Label Text="Password"/>
+                <Entry Text="{Binding Entry.Password}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="3">
+                <Label Text="Website"/>
+                <Entry Text="{Binding Entry.Website}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="4">
+                <Label Text="Note"/>
+                <Editor Text="{Binding Entry.Note}"
+                    MinimumHeightRequest="150"
+                    AutoSize="TextChanges"
+                    MaximumHeightRequest="250"/>
+            </VerticalStackLayout>
+            <Grid Grid.Row="5"
+                  Padding="5"
+                  ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save"
+                        Grid.Column="0"/>
+                <Button Text="Go Back"
+                        Grid.Column="1"
+                        Clicked="Button_Clicked" />
+            </Grid>
+        </Grid>
+    </ScrollView>
+
 </ContentPage>

@@ -42,7 +42,7 @@ public partial class MainPage : ContentPage
     {
         var searchBar = (SearchBar)sender;
         var searchText = searchBar.Text!;
-
+        
         FilteredEntries.Clear();
         foreach (var entry in entries)
         {
