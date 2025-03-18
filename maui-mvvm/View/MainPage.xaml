@@ -11,9 +11,10 @@
         Spacing="25">
             <!-- Entry binding to private field -->
             <!-- funktioniert nicht, weil privates feld kein getter hat -->
+            
             <Entry Placeholder="test viewmodel" Text="{Binding TestViewModel}"/>
             <Label Text="{Binding TestViewModel}" />
-
+            
 
             <Label Text="Vorname" />
             <Entry Placeholder="Max" Text="{Binding MyPerson.FirstName}"/>
@@ -22,7 +23,8 @@
             <!-- Output -->
             <Label Text="{Binding MyPerson.FirstName}"/>
             <Label Text="{Binding MyPerson.LastName}"/>
-            <Button Text="Person hinzufügen" Clicked="{Binding Button_Clicked}"/>
+            <Button Text="Person hinzufügen" Command="{Binding AddCommand}"/>
+            <Button Text="Alert anzeigen" Command="{Binding ShowAlertCommand}" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

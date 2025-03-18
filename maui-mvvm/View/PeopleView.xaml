@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_mvvm.View.PeopleView"
+             xmlns:viewmodel="clr-namespace:maui_mvvm.ViewModel"
+             xmlns:model="clr-namespace:maui_mvvm.Model"
+             x:DataType="viewmodel:PeopleViewModel"
+             Title="PeopleView">
+    <Grid>
+        <CollectionView ItemsSource="{Binding People}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type model:Person}">
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding FirstName}" />
+                        <Label Text="{Binding LastName}" />
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
