@@ -3,15 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui_mvvm.View.MainPage"
              xmlns:view="clr-namespace:maui_mvvm.View"
-             x:DataType="view:MainPage">
+             xmlns:viewmodel="clr-namespace:maui_mvvm.ViewModel"
+             x:DataType="viewmodel:MainViewModel">
     <ScrollView>
         <VerticalStackLayout
         Padding="30,0"
         Spacing="25">
             <!-- Entry binding to private field -->
-            <!-- funktioniert nicht, weil privates feld kein getter hat
-        <Entry Placeholder="private" Text="{Binding privateField}"/>
-        -->
+            <!-- funktioniert nicht, weil privates feld kein getter hat -->
+            <Entry Placeholder="test viewmodel" Text="{Binding TestViewModel}"/>
+            <Label Text="{Binding TestViewModel}" />
+
+
             <Label Text="Vorname" />
             <Entry Placeholder="Max" Text="{Binding MyPerson.FirstName}"/>
             <Label Text="Nachname" />
@@ -19,7 +22,7 @@
             <!-- Output -->
             <Label Text="{Binding MyPerson.FirstName}"/>
             <Label Text="{Binding MyPerson.LastName}"/>
-            <Button Text="Person hinzufügen" Clicked="Button_Clicked"/>
+            <Button Text="Person hinzufügen" Clicked="{Binding Button_Clicked}"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
