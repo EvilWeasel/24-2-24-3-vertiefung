@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-propertychanged", "mau
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delegates-events", "delegates-events\delegates-events.csproj", "{6E21795D-AA23-4743-B7F8-68851FECD8B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-mvvm", "maui-mvvm\maui-mvvm.csproj", "{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,11 @@ Global
 		{6E21795D-AA23-4743-B7F8-68851FECD8B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E21795D-AA23-4743-B7F8-68851FECD8B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E21795D-AA23-4743-B7F8-68851FECD8B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

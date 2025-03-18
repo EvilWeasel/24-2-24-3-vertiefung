@@ -24,10 +24,10 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type local:PasswordEntry}">
                     <Grid>
-                        <Grid.GestureRecognizers>
+                        <!--<Grid.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
                                                   CommandParameter="{Binding .}"/>
-                        </Grid.GestureRecognizers>
+                        </Grid.GestureRecognizers>-->
                         <Border
                             Stroke="{StaticResource PrimaryDark}"
                             StrokeThickness="4"
@@ -39,6 +39,8 @@
                                        TextColor="LightGray" />
                                 <Label Text="{Binding Login}"
                                        FontSize="Medium" />
+                                <Button Clicked="TapGestureRecognizer_Tapped"
+                                        CommandParameter="{Binding .}"/>
                             </VerticalStackLayout>
                         </Border>
                     </Grid>

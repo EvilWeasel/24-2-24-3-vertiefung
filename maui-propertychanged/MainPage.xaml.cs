@@ -70,7 +70,7 @@ public class Person : INotifyPropertyChanged
         {
             lastName = value;
             OnPropertyChanged();
-            PropertyChanged(this, new new PropertyChangedEventArgs("LastName"));
+            //PropertyChanged(this, new PropertyChangedEventArgs("LastName"));
         }
     }
     public Person(string firstName, string lastName)

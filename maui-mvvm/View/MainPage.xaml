@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_mvvm.View.MainPage"
+             xmlns:view="clr-namespace:maui_mvvm.View"
+             x:DataType="view:MainPage">
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+            <!-- Entry binding to private field -->
+            <!-- funktioniert nicht, weil privates feld kein getter hat
+        <Entry Placeholder="private" Text="{Binding privateField}"/>
+        -->
+            <Label Text="Vorname" />
+            <Entry Placeholder="Max" Text="{Binding MyPerson.FirstName}"/>
+            <Label Text="Nachname" />
+            <Entry Placeholder="Mustermann" Text="{Binding MyPerson.LastName}"/>
+            <!-- Output -->
+            <Label Text="{Binding MyPerson.FirstName}"/>
+            <Label Text="{Binding MyPerson.LastName}"/>
+            <Button Text="Person hinzufügen" Clicked="Button_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
