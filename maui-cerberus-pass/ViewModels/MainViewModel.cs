@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using maui_cerberus_pass.Models;
 
@@ -8,6 +9,23 @@ public partial class MainViewModel : BaseViewModel
 {
     private readonly ObservableCollection<PasswordEntry> entries = [];
     public ObservableCollection<PasswordEntry> FilteredEntries { get; set; } = [];
+
+    /* Implementierung der Suche über Text Property Binding und Seach-Function Call im Setter */
+    string searchText = string.Empty;
+    public string SearchText
+    {
+        get => searchText;
+        set
+        {
+            if (value != searchText)
+            {
+                OnPropertyChanging();
+                searchText = value;
+                Search(value);
+                OnPropertyChanged();
+            }
+        }
+    }
 
     public MainViewModel()
     {

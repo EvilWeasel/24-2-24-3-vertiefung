@@ -1,4 +1,5 @@
-﻿using maui_cerberus_pass.ViewModels;
+﻿using CommunityToolkit.Maui;
+using maui_cerberus_pass.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace maui_cerberus_pass;
@@ -10,6 +11,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
