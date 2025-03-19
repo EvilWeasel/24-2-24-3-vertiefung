@@ -4,6 +4,7 @@ using maui_cerberus_pass.Models;
 
 namespace maui_cerberus_pass.ViewModels;
 
+[QueryProperty(nameof(Entry), "Entry")]
 public partial class DetailsViewModel : BaseViewModel
 {
     [ObservableProperty]

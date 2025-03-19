@@ -40,11 +40,8 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public void Search(object sender)
+    public void Search(string searchText)
     {
-        var searchBar = (SearchBar)sender;
-        var searchText = searchBar.Text!;
-
         FilteredEntries.Clear();
         foreach (var entry in entries)
         {
@@ -55,15 +52,15 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public async Task GoToDetails()
+    public async Task GoToDetails(object param)
     {
-        //if (e.Parameter is PasswordEntry selectedEntry)
-        //{
-        //    await Shell.Current.GoToAsync($"//DetailsPage", true,
-        //    new Dictionary<string, object>
-        //    {
-        //        {"Entry",  selectedEntry}
-        //    });
-        //}
+        if (param is PasswordEntry selectedEntry)
+        {
+            await Shell.Current.GoToAsync($"//DetailsPage", true,
+            new Dictionary<string, object>
+            {
+                {"Entry",  selectedEntry}
+            });
+        }
     }
 }
