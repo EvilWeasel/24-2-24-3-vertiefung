@@ -23,7 +23,7 @@
             <!-- Output -->
             <Label Text="{Binding MyPerson.FirstName}"/>
             <Label Text="{Binding MyPerson.LastName}"/>
-            <Button Text="Person hinzufügen" Command="{Binding AddCommand}"/>
+            <Button Text="Person hinzufügen" Command="{Binding AddPersonCommand}"/>
             <Button Text="Alert anzeigen" Command="{Binding ShowAlertCommand}" />
         </VerticalStackLayout>
     </ScrollView>
