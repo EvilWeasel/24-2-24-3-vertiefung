@@ -1,4 +1,4 @@
-﻿namespace maui_cerberus_pass;
+﻿namespace maui_cerberus_pass.Models;
 // PascalCase => BegriffstrennungenImmerErsterBuchstabeGroß
 // => Properties, Funktionen / Methods, Classes, Namespaces, Enums
 public class PasswordEntry

@@ -1,16 +1,17 @@
-﻿
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using CommunityToolkit.Mvvm.Input;
+using maui_cerberus_pass.Models;
 
-namespace maui_cerberus_pass;
-public partial class MainPage : ContentPage
+namespace maui_cerberus_pass.ViewModels;
+
+public partial class MainViewModel : BaseViewModel
 {
     private readonly ObservableCollection<PasswordEntry> entries = [];
     public ObservableCollection<PasswordEntry> FilteredEntries { get; set; } = [];
-    public MainPage()
+
+    public MainViewModel()
     {
-        InitializeComponent();
-        BindingContext = this;
+        Title = "Vault";
         entries.Add(new PasswordEntry(
             "github-privat",
             "evilweasel",
@@ -38,11 +39,12 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    [RelayCommand]
+    public void Search(object sender)
     {
         var searchBar = (SearchBar)sender;
         var searchText = searchBar.Text!;
-        
+
         FilteredEntries.Clear();
         foreach (var entry in entries)
         {
@@ -52,15 +54,16 @@ public partial class MainPage : ContentPage
         }
     }
 
-    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    [RelayCommand]
+    public async Task GoToDetails()
     {
-        if (e.Parameter is PasswordEntry selectedEntry)
-        {
-            await Shell.Current.GoToAsync($"//DetailsPage", true,
-            new Dictionary<string, object>
-            {
-                {"Entry",  selectedEntry}
-            });
-        }
+        //if (e.Parameter is PasswordEntry selectedEntry)
+        //{
+        //    await Shell.Current.GoToAsync($"//DetailsPage", true,
+        //    new Dictionary<string, object>
+        //    {
+        //        {"Entry",  selectedEntry}
+        //    });
+        //}
     }
 }
