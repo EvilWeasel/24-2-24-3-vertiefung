@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using maui_mvvm.Helper;
 using maui_mvvm.Model;
+using maui_mvvm.Service;
 
 namespace maui_mvvm.ViewModelManual;
 public class MainViewModel : BaseViewModel
@@ -10,7 +11,7 @@ public class MainViewModel : BaseViewModel
     public RelayCommand AddCommand => new RelayCommand(execute => AddPerson());
     public RelayCommand ShowAlertCommand => new RelayCommand(execute => ShowAlert());
 
-    public ObservableCollection<Person> People = Person.People;
+    public ObservableCollection<Person> People;
     public Person MyPerson { get; set; }
        = new Person("Tobi", "Wehrle");
     private string testViewModel = string.Empty;
@@ -22,6 +23,11 @@ public class MainViewModel : BaseViewModel
             testViewModel = value;
             OnProptertyChanged();
         }
+    }
+
+    public MainViewModel(PeopleService peopleService)
+    {
+        People = peopleService.People;
     }
 
     public void AddPerson()

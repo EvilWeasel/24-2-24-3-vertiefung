@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 namespace maui_mvvm.Model;
 public class Person : INotifyPropertyChanged
 {
-    public static ObservableCollection<Person> People { get; set; } = new();
     private string firstName;
     private string lastName;
 

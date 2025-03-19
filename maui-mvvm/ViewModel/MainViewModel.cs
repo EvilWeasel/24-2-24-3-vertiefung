@@ -5,6 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using maui_mvvm.Helper;
 using maui_mvvm.Model;
+using maui_mvvm.Service;
 
 namespace maui_mvvm.ViewModel;
 public partial class MainViewModel : BaseViewModel
@@ -12,7 +13,12 @@ public partial class MainViewModel : BaseViewModel
     // public RelayCommand AddCommand => new RelayCommand(execute => AddPerson());
     // public RelayCommand ShowAlertCommand => new RelayCommand(execute => ShowAlert());
 
-    public ObservableCollection<Person> People = Person.People;
+    public MainViewModel(PeopleService peopleService)
+    {
+        People = peopleService.People;
+    }
+
+    public ObservableCollection<Person> People;
     public Person MyPerson { get; set; }
        = new Person("Tobi", "Wehrle");
     [ObservableProperty]

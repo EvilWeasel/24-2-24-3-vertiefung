@@ -4,9 +4,9 @@ namespace maui_mvvm.View;
 
 public partial class PeopleView : ContentPage
 {
-	public PeopleView()
+	public PeopleView(PeopleViewModel viewModel)
 	{
 		InitializeComponent();
-		BindingContext = new PeopleViewModel();
+		BindingContext = viewModel;
 	}
 }
