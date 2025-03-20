@@ -5,9 +5,16 @@ namespace password_manager_toolkit;
 public class PasswordManager
 {
     private List<PasswordEntry> vault;
-    private const string vaultFilePath = "vault.cerberus";
+    private string vaultFilePath = "vault.cerberus";
+    private string masterPassFilePath = "masterpass.cerberus";
     public PasswordManager()
     {
+        vault = [];
+    }
+    public PasswordManager(string baseFileDir)
+    {
+        this.vaultFilePath = Path.Join(baseFileDir, vaultFilePath);
+        this.masterPassFilePath = Path.Join(baseFileDir, masterPassFilePath);
         vault = [];
     }
     public IEnumerable<PasswordEntry> GetAll() => vault;
@@ -66,6 +73,7 @@ public class PasswordManager
     }
     private void SaveVault(string masterPass)
     {
+        if (vault.Count < 1) return;
         var json = JsonSerializer.Serialize(vault);
         var encryptedJson = VaultEncryption.Encrypt(json, masterPass);
         File.WriteAllText(vaultFilePath, encryptedJson);
@@ -92,4 +100,23 @@ public class PasswordManager
         // ==> wenn "entweder" == null, dann ist x = "oder"
         // decrypt
     }
+
+    public void SetupMasterPassword(string plainPassword)
+    {
+        if (File.Exists(masterPassFilePath)) return;
+        var salt = String.Empty;
+        var hashedPassword = VaultEncryption.HashPassword(plainPassword, out salt);
+
+        File.WriteAllLines(masterPassFilePath,
+            new[] { hashedPassword, salt });
+    }
+    public bool VerifyMasterPass(string plainPassword)
+    {
+        if (!File.Exists(masterPassFilePath)) return false;
+        var storedMasterPass = File.ReadAllLines(masterPassFilePath);
+        var storedHash = storedMasterPass[0];
+        var storedSalt = storedMasterPass[1];
+        return VaultEncryption.VerifyPassword(plainPassword, storedHash, storedSalt);
+    }
+    public bool IsFirstStart => !File.Exists(masterPassFilePath);
 }

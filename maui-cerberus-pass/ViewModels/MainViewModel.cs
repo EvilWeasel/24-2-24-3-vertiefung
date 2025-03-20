@@ -78,7 +78,8 @@ public partial class MainViewModel : BaseViewModel
                     selectedEntry.Password,
                     selectedEntry.Website,
                     selectedEntry.Note
-                    )}
+                    )},
+                {"TitleToChange", selectedEntry.Title }
             });
         }
     }

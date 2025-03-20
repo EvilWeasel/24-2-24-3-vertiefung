@@ -19,9 +19,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-
+		var baseAppDir = FileSystem.Current.AppDataDirectory;
 		// Dependency-Injection Services
-		builder.Services.AddSingleton<PasswordManager>();
+		builder.Services.AddSingleton<PasswordManager>(s => new PasswordManager(baseAppDir));
 		
 		// Dependency-Injection ViewModels
 		builder.Services.AddSingleton<MainViewModel>();
