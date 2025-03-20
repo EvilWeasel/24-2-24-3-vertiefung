@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using maui_cerberus_pass.ViewModels;
+using maui_cerberus_pass.Views;
 using Microsoft.Extensions.Logging;
 
 namespace maui_cerberus_pass;
@@ -22,7 +23,11 @@ public static class MauiProgram
 
 		// Dependency-Injection ViewModels
 		builder.Services.AddSingleton<MainViewModel>();
-		builder.Services.AddSingleton<DetailsViewModel>();
+		builder.Services.AddTransient<DetailsViewModel>();
+
+		// Dependency-Injection Views
+		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddTransient<DetailsPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

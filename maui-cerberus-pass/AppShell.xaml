@@ -8,11 +8,8 @@
     Title="maui_cerberus_pass">
 
     <ShellContent
+        Shell.NavBarIsVisible="true"
         Title="Home"
         ContentTemplate="{DataTemplate views:MainPage}"
         Route="MainPage" />
-    <ShellContent
-        Title="Details"
-        ContentTemplate="{DataTemplate views:DetailsPage}"
-        Route="DetailsPage"/>
 </Shell>

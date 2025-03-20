@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using maui_cerberus_pass.Models;
+using maui_cerberus_pass.Views;
 
 namespace maui_cerberus_pass.ViewModels;
 
@@ -74,10 +75,17 @@ public partial class MainViewModel : BaseViewModel
     {
         if (param is PasswordEntry selectedEntry)
         {
-            await Shell.Current.GoToAsync($"//DetailsPage", true,
+            // $"{nameof(DetailsPage)}" => "DetailsPage"
+            await Shell.Current.GoToAsync($"{nameof(DetailsPage)}", true,
             new Dictionary<string, object>
             {
-                {"Entry",  selectedEntry}
+                {"Entry",  new PasswordEntry(
+                    selectedEntry.Title,
+                    selectedEntry.Login,
+                    selectedEntry.Password,
+                    selectedEntry.Website,
+                    selectedEntry.Note
+                    )}
             });
         }
     }

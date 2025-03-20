@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "maui-mvvm", "maui-mvvm\maui
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "singleton-demo", "singleton-demo\singleton-demo.csproj", "{412FDBDE-ED1D-4A74-8483-A660D4508CCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{90FA8A9F-1B80-4EF6-9A0A-64BC4071FD57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{412FDBDE-ED1D-4A74-8483-A660D4508CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412FDBDE-ED1D-4A74-8483-A660D4508CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412FDBDE-ED1D-4A74-8483-A660D4508CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412FDBDE-ED1D-4A74-8483-A660D4508CCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

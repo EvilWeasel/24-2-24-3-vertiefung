@@ -8,11 +8,11 @@ namespace maui_cerberus_pass.ViewModels;
 public partial class DetailsViewModel : BaseViewModel
 {
     [ObservableProperty]
-    PasswordEntry entry;
+    PasswordEntry? entry;
 
     [RelayCommand]
     public async Task NavigateBack()
     {
-        await Shell.Current.GoToAsync("//MainPage");
+        await Shell.Current.GoToAsync("..");
     }
 }
