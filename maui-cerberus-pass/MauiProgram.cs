@@ -2,6 +2,7 @@
 using maui_cerberus_pass.ViewModels;
 using maui_cerberus_pass.Views;
 using Microsoft.Extensions.Logging;
+using password_manager_toolkit;
 
 namespace maui_cerberus_pass;
 
@@ -20,7 +21,8 @@ public static class MauiProgram
 			});
 
 		// Dependency-Injection Services
-
+		builder.Services.AddSingleton<PasswordManager>();
+		
 		// Dependency-Injection ViewModels
 		builder.Services.AddSingleton<MainViewModel>();
 		builder.Services.AddTransient<DetailsViewModel>();

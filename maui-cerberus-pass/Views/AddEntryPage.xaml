@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_cerberus_pass.Views.AddEntryPage"
+             xmlns:viewmodels="clr-namespace:maui_cerberus_pass.ViewModels"
+             x:DataType="viewmodels:AddEntryViewModel"
+             Title="{Binding Title}">
+    <ScrollView>
+        <Grid Padding="10" RowSpacing="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <VerticalStackLayout Grid.Row="0">
+                <Label Text="Title"/>
+                <Entry Text="{Binding Entry.Title}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="1">
+                <Label Text="Login"/>
+                <Entry Text="{Binding Entry.Login}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2">
+                <Label Text="Password"/>
+                <Entry Text="{Binding Entry.Password}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="3">
+                <Label Text="Website"/>
+                <Entry Text="{Binding Entry.Website}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="4">
+                <Label Text="Note"/>
+                <Editor Text="{Binding Entry.Note}"
+                 MinimumHeightRequest="150"
+                 AutoSize="TextChanges"
+                 MaximumHeightRequest="250"/>
+            </VerticalStackLayout>
+            <Grid Grid.Row="5"
+               Padding="5"
+               ColumnSpacing="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save"
+                     Grid.ColumnSpan="2"/>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</ContentPage>

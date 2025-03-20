@@ -10,7 +10,7 @@ public class PasswordManager
     {
         vault = [];
     }
-    public List<PasswordEntry> GetAll() => vault;
+    public IEnumerable<PasswordEntry> GetAll() => vault;
 
     public PasswordEntry? CreateEntry(
       string masterPass,

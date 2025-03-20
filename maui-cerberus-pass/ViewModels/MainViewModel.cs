@@ -1,13 +1,15 @@
 ﻿using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using maui_cerberus_pass.Models;
+using password_manager_toolkit;
 using maui_cerberus_pass.Views;
 
 namespace maui_cerberus_pass.ViewModels;
 
 public partial class MainViewModel : BaseViewModel
 {
+    private const string masterpass = "P@ssword";
+    private readonly PasswordManager manager;
     private readonly ObservableCollection<PasswordEntry> entries = [];
     public ObservableCollection<PasswordEntry> FilteredEntries { get; set; } = [];
 
@@ -28,29 +30,16 @@ public partial class MainViewModel : BaseViewModel
         }
     }
 
-    public MainViewModel()
+    public MainViewModel(PasswordManager _manager)
     {
+        manager = _manager;
         Title = "Vault";
-        entries.Add(new PasswordEntry(
-            "github-privat",
-            "evilweasel",
-            "P@ssword"
-        ));
-        entries.Add(new PasswordEntry(
-            "github-arbeit",
-            "boilerplatesharp",
-            "P@ssword"
-        ));
-        entries.Add(new PasswordEntry(
-            "steam",
-            "evilweasel",
-            "P@ssword"
-        ));
-        entries.Add(new PasswordEntry(
-            "gog",
-            "waldmeistersd",
-            "P@ssword"
-        ));
+        
+        manager.LoadVault(masterpass);
+
+        entries = new ObservableCollection<PasswordEntry>(manager.GetAll());
+        //entries = [.. manager.GetAll()];
+        
         // FilteredEntries = new ObservableCollection<PasswordEntry>(Entries);
         foreach (var entry in entries)
         {
@@ -88,5 +77,19 @@ public partial class MainViewModel : BaseViewModel
                     )}
             });
         }
+    }
+
+    [RelayCommand]
+    public async Task AddNewEntry()
+    {
+        
+        manager.CreateEntry(
+            masterpass,
+            "TestTitle1",
+            "TestLogin",
+            "TestPassword",
+            "TestWebsite",
+            "TestNote"
+            );
     }
 }

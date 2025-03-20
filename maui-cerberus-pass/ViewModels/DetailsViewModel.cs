@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using maui_cerberus_pass.Models;
+using password_manager_toolkit;
 
 namespace maui_cerberus_pass.ViewModels;
 
