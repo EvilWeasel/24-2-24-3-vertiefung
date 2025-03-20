@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using password_manager_toolkit;
 
 namespace maui_cerberus_pass.ViewModels;
@@ -17,7 +18,7 @@ public partial class AddEntryViewModel : BaseViewModel
             string.Empty,string.Empty,string.Empty);
         this.manager = manager;
     }
-
+    [RelayCommand]
     public async Task AddEntry()
     {
         manager.CreateEntry(
@@ -27,5 +28,6 @@ public partial class AddEntryViewModel : BaseViewModel
             Entry.Password,
             Entry.Website,
             Entry.Note);
+        await Shell.Current.GoToAsync("..?Refresh=True");
     }
 }

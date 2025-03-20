@@ -26,10 +26,12 @@ public static class MauiProgram
 		// Dependency-Injection ViewModels
 		builder.Services.AddSingleton<MainViewModel>();
 		builder.Services.AddTransient<DetailsViewModel>();
+		builder.Services.AddTransient<AddEntryViewModel>();
 
 		// Dependency-Injection Views
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddTransient<DetailsPage>();
+		builder.Services.AddTransient<AddEntryPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();

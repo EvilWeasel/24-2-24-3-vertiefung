@@ -44,7 +44,7 @@
         <Button
             Grid.Column="1"
             Text="Add"
-            Command="{Binding AddNewEntryCommand}"/>
+            Command="{Binding GoToNewEntryCommand}"/>
         <CollectionView ItemsSource="{Binding FilteredEntries}"
                         Margin="0, 10, 0, 0"
                         Grid.Row="1"

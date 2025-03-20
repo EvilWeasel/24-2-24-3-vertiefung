@@ -46,7 +46,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button Text="Save"
-                        Grid.Column="0"/>
+                        Grid.Column="0"
+                        Command="{Binding UpdateEntryCommand}"/>
                 <Button Text="Go Back"
                         Grid.Column="1"
                         Command="{Binding NavigateBackCommand}" />

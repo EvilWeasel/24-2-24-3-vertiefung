@@ -6,11 +6,13 @@ using maui_cerberus_pass.Views;
 
 namespace maui_cerberus_pass.ViewModels;
 
+[QueryProperty(nameof(Refresh), "Refresh")]
 public partial class MainViewModel : BaseViewModel
 {
     private const string masterpass = "P@ssword";
     private readonly PasswordManager manager;
-    private readonly ObservableCollection<PasswordEntry> entries = [];
+    // [ObservableProperty]
+    // private ObservableCollection<PasswordEntry> entries = [];
     public ObservableCollection<PasswordEntry> FilteredEntries { get; set; } = [];
 
     /* Implementierung der Suche über Text Property Binding und Seach-Function Call im Setter */
@@ -30,6 +32,8 @@ public partial class MainViewModel : BaseViewModel
         }
     }
 
+    public bool Refresh { set => ReloadVault(); }
+
     public MainViewModel(PasswordManager _manager)
     {
         manager = _manager;
@@ -37,11 +41,11 @@ public partial class MainViewModel : BaseViewModel
         
         manager.LoadVault(masterpass);
 
-        entries = new ObservableCollection<PasswordEntry>(manager.GetAll());
+        // Entries = new ObservableCollection<PasswordEntry>(manager.GetAll());
         //entries = [.. manager.GetAll()];
         
         // FilteredEntries = new ObservableCollection<PasswordEntry>(Entries);
-        foreach (var entry in entries)
+        foreach (var entry in manager.GetAll())
         {
             FilteredEntries.Add(entry);
         }
@@ -51,7 +55,7 @@ public partial class MainViewModel : BaseViewModel
     public void Search(string searchText)
     {
         FilteredEntries.Clear();
-        foreach (var entry in entries)
+        foreach (var entry in manager.GetAll())
         {
             if (entry.Title.Contains(searchText,
                     StringComparison.InvariantCultureIgnoreCase))
@@ -80,16 +84,17 @@ public partial class MainViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public async Task AddNewEntry()
+    public async Task GoToNewEntry()
     {
-        
-        manager.CreateEntry(
-            masterpass,
-            "TestTitle1",
-            "TestLogin",
-            "TestPassword",
-            "TestWebsite",
-            "TestNote"
-            );
+        await Shell.Current.GoToAsync($"{nameof(AddEntryPage)}", true);
+    }
+
+    private void ReloadVault()
+    {
+        FilteredEntries.Clear();
+        foreach (var entry in manager.GetAll())
+        {
+            FilteredEntries.Add(entry);
+        }
     }
 }

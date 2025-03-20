@@ -9,6 +9,7 @@ namespace maui_cerberus_pass
             InitializeComponent();
             // Routing.RegisterRoute("DetailsPage", typeof(DetailsPage));
             Routing.RegisterRoute(nameof(DetailsPage), typeof(DetailsPage));
+            Routing.RegisterRoute(nameof(AddEntryPage), typeof(AddEntryPage));
         }
     }
 }

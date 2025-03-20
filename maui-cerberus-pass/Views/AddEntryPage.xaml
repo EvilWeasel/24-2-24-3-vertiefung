@@ -46,7 +46,8 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button Text="Save"
-                     Grid.ColumnSpan="2"/>
+                        Grid.ColumnSpan="2"
+                        Command="{Binding AddEntryCommand}"/>
             </Grid>
         </Grid>
     </ScrollView>
