@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="maui_cerberus_pass.Views.DetailsPage"
              xmlns:viewmodels="clr-namespace:maui_cerberus_pass.ViewModels"
-             x:DataType="viewmodels:DetailsViewModel">
+             x:DataType="viewmodels:DetailsViewModel"
+             Title="{Binding Title}">
     <ScrollView>
         <Grid Padding="10" RowSpacing="10">
             <Grid.RowDefinitions>

@@ -5,7 +5,8 @@
              xmlns:viewmodels="clr-namespace:maui_cerberus_pass.ViewModels"
              xmlns:models="clr-namespace:maui_cerberus_pass.Models"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:DataType="viewmodels:MainViewModel">
+             x:DataType="viewmodels:MainViewModel"
+             Title="{Binding Title}">
     <Grid
         Margin="15,15,5,15">
         <Grid.RowDefinitions>
@@ -15,7 +16,6 @@
         <SearchBar x:Name="searchBar"
                    Placeholder="github"
                    FontSize="Small"
-                   Text="{Binding SearchText}"
                    SearchCommand="{Binding SearchCommand}"
                    SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
                    >
@@ -28,13 +28,13 @@
             Command und CommandParameter können 1:1 aus der SearchBar übernommen werden.
             Für EventName können alle regulären Events verwendet werden, welche auf der Maui-Control (eg. SearchBar) existieren
             -->
-            <!--<SearchBar.Behaviors>
+            <SearchBar.Behaviors>
                 <toolkit:EventToCommandBehavior 
                     EventName="TextChanged"
                     BindingContext="{Binding Path=BindingContext, Source={x:Reference searchBar}, x:DataType=SearchBar}"
                     Command="{Binding SearchCommand}"
                     CommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
-            </SearchBar.Behaviors>-->
+            </SearchBar.Behaviors>
         </SearchBar>
         <CollectionView ItemsSource="{Binding FilteredEntries}"
                         Margin="0, 10, 0, 0"
