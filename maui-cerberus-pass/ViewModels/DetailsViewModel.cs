@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Maui.Views;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using password_manager_toolkit;
 
@@ -9,7 +8,6 @@ namespace maui_cerberus_pass.ViewModels;
 [QueryProperty(nameof(TitleToChange), "TitleToChange")]
 public partial class DetailsViewModel : BaseViewModel
 {
-    // private string masterpass = "P@ssword";
     public string TitleToChange { get; set; } = "";
     [ObservableProperty]
     PasswordEntry? entry;

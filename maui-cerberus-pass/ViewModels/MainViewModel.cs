@@ -1,8 +1,7 @@
-﻿using System.Collections.ObjectModel;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using password_manager_toolkit;
+﻿using CommunityToolkit.Mvvm.Input;
 using maui_cerberus_pass.Views;
+using password_manager_toolkit;
+using System.Collections.ObjectModel;
 
 namespace maui_cerberus_pass.ViewModels;
 
@@ -38,12 +37,12 @@ public partial class MainViewModel : BaseViewModel
     {
         manager = _manager;
         Title = "Vault";
-        
+
         manager.LoadVault(masterpass);
 
         // Entries = new ObservableCollection<PasswordEntry>(manager.GetAll());
         //entries = [.. manager.GetAll()];
-        
+
         // FilteredEntries = new ObservableCollection<PasswordEntry>(Entries);
         foreach (var entry in manager.GetAll())
         {
@@ -96,6 +95,29 @@ public partial class MainViewModel : BaseViewModel
         foreach (var entry in manager.GetAll())
         {
             FilteredEntries.Add(entry);
+        }
+    }
+
+    [RelayCommand]
+    public async Task DeleteEntry(object param)
+    {
+        if (param is PasswordEntry entry)
+        {
+            var masterpass = await Shell.Current.DisplayPromptAsync(
+                "Enter Masterpass", "Verify your MasterPassword to continue");
+            if (masterpass is not null && manager.VerifyMasterPass(masterpass))
+            {
+                if (manager.DeleteEntry(masterpass, entry.Title))
+                    ReloadVault();
+                else
+                    await Shell.Current.DisplayAlert("Error",
+                        $"Entry {entry.Title} could not be deleted", "OK");
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error",
+                    "MasterPassword is not correct!", "Ok");
+            }
         }
     }
 }

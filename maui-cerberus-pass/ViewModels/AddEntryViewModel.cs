@@ -6,7 +6,6 @@ namespace maui_cerberus_pass.ViewModels;
 
 public partial class AddEntryViewModel : BaseViewModel
 {
-    private const string masterpass = "P@ssword";
     [ObservableProperty]
     PasswordEntry entry;
 
@@ -15,12 +14,14 @@ public partial class AddEntryViewModel : BaseViewModel
     public AddEntryViewModel(PasswordManager manager)
     {
         entry = new PasswordEntry(
-            string.Empty,string.Empty,string.Empty);
+            string.Empty, string.Empty, string.Empty);
         this.manager = manager;
     }
     [RelayCommand]
     public async Task AddEntry()
     {
+        var masterpass = await Shell.Current.DisplayPromptAsync(
+            "Enter Masterpass", "Verify your MasterPassword to continue");
         manager.CreateEntry(
             masterpass,
             Entry.Title,

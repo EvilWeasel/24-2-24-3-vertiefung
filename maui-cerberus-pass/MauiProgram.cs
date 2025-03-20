@@ -8,35 +8,37 @@ namespace maui_cerberus_pass;
 
 public static class MauiProgram
 {
-	public static MauiApp CreateMauiApp()
-	{
-		var builder = MauiApp.CreateBuilder();
-		builder
-			.UseMauiApp<App>()
-			.UseMauiCommunityToolkit()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
-		var baseAppDir = FileSystem.Current.AppDataDirectory;
-		// Dependency-Injection Services
-		builder.Services.AddSingleton<PasswordManager>(s => new PasswordManager(baseAppDir));
-		
-		// Dependency-Injection ViewModels
-		builder.Services.AddSingleton<MainViewModel>();
-		builder.Services.AddTransient<DetailsViewModel>();
-		builder.Services.AddTransient<AddEntryViewModel>();
+    public static MauiApp CreateMauiApp()
+    {
+        var builder = MauiApp.CreateBuilder();
+        builder
+            .UseMauiApp<App>()
+            .UseMauiCommunityToolkit()
+            .ConfigureFonts(fonts =>
+            {
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
+        var baseAppDir = FileSystem.Current.AppDataDirectory;
+        // Dependency-Injection Services
+        builder.Services.AddSingleton<PasswordManager>(s => new PasswordManager(baseAppDir));
 
-		// Dependency-Injection Views
-		builder.Services.AddSingleton<MainPage>();
-		builder.Services.AddTransient<DetailsPage>();
-		builder.Services.AddTransient<AddEntryPage>();
+        // Dependency-Injection ViewModels
+        builder.Services.AddSingleton<LoginViewModel>();
+        builder.Services.AddSingleton<MainViewModel>();
+        builder.Services.AddTransient<DetailsViewModel>();
+        builder.Services.AddTransient<AddEntryViewModel>();
+
+        // Dependency-Injection Views
+        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddTransient<DetailsPage>();
+        builder.Services.AddTransient<AddEntryPage>();
 
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
 
-		return builder.Build();
-	}
+        return builder.Build();
+    }
 }

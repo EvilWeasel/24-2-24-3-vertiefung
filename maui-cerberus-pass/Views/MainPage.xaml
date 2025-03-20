@@ -60,21 +60,29 @@
                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}, Path=GoToDetailsCommand}"
                                                   CommandParameter="{Binding .}"/>
                         </Grid.GestureRecognizers>
+
                         <Border
                             Stroke="{StaticResource PrimaryDark}"
                             StrokeThickness="4"
                             StrokeShape="RoundRectangle 7"
                             Margin="0,0,15,0">
-                            <VerticalStackLayout Padding="10">
+                            <Grid Padding="10"
+                                  RowDefinitions="auto, auto"
+                                  ColumnDefinitions="*, auto">
                                 <Label Text="{Binding Title}"
                                        FontSize="Small"
                                        TextColor="LightGray" />
                                 <Label Text="{Binding Login}"
-                                       FontSize="Medium" />
-                                <!--<Button Clicked="TapGestureRecognizer_Tapped"
-                                        CommandParameter="{Binding .}"/>-->
-                            </VerticalStackLayout>
+                                       FontSize="Medium" 
+                                       Grid.Row="1"/>
+                                <Button Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:MainViewModel}}, Path=DeleteEntryCommand}"
+                                        Text="Delete"
+                                        CommandParameter="{Binding .}"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="1"/>
+                            </Grid>
                         </Border>
+
                     </Grid>
 
                 </DataTemplate>

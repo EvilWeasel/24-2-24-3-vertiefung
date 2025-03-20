@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="maui_cerberus_pass.Views.LoginPage"
+             xmlns:viewmodels="clr-namespace:maui_cerberus_pass.ViewModels"
+             x:DataType="viewmodels:LoginViewModel"
+             Title="{Binding Title}">
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label Text="Enter MasterPasswort" 
+               FontSize="Medium"/>
+        <Entry Text="{Binding InputMasterPassword}" 
+               IsPassword="False"
+               Placeholder="P@ssword"/>
+        <Label Text="Confirm MasterPasswort" 
+               IsVisible="{Binding IsFirstStart}"
+               FontSize="Medium" />
+        <Entry Text="{Binding InputConfirmMasterPassword}" 
+               IsVisible="{Binding IsFirstStart}"
+               IsPassword="False"
+               Placeholder="P@ssword"/>
+        <Button Text="Unlock Vault" 
+                Command="{Binding CheckMasterPasswordCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>
