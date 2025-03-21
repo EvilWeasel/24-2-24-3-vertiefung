@@ -9,7 +9,6 @@ namespace maui_cerberus_pass.ViewModels;
 [QueryProperty(nameof(Refresh), "Refresh")]
 public partial class MainViewModel : BaseViewModel
 {
-    private const string masterpass = "P@ssword";
     private readonly PasswordManager manager;
     // [ObservableProperty]
     // private ObservableCollection<PasswordEntry> entries = [];
@@ -39,7 +38,7 @@ public partial class MainViewModel : BaseViewModel
         manager = _manager;
         Title = "Vault";
         
-        manager.LoadVault(masterpass);
+        //manager.LoadVault(masterpass);
 
         // Entries = new ObservableCollection<PasswordEntry>(manager.GetAll());
         //entries = [.. manager.GetAll()];
@@ -97,5 +96,11 @@ public partial class MainViewModel : BaseViewModel
         {
             FilteredEntries.Add(entry);
         }
+    }
+    [RelayCommand]
+    public async Task CopyPasswordToClipboard(object param)
+    {
+        if (param is PasswordEntry selectedEntry)
+            await Clipboard.SetTextAsync(selectedEntry.Password);
     }
 }

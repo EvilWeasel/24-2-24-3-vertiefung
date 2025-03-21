@@ -25,7 +25,13 @@
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="2">
                 <Label Text="Password"/>
-                <Entry Text="{Binding Entry.Password}"/>
+                <Grid ColumnDefinitions="*, auto" ColumnSpacing="10">
+                    <Entry Text="{Binding Entry.Password}"
+                           IsPassword="{Binding IsPasswordHidden}"/>
+                    <Button Text="Toggle"
+                            Grid.Column="1"
+                            Command="{Binding TogglePasswordVisibleCommand}"/>
+                </Grid>
             </VerticalStackLayout>
             <VerticalStackLayout Grid.Row="3">
                 <Label Text="Website"/>

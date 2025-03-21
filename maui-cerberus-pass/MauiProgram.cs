@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using maui_cerberus_pass.Services;
 using maui_cerberus_pass.ViewModels;
 using maui_cerberus_pass.Views;
 using Microsoft.Extensions.Logging;
@@ -20,8 +21,12 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		var appDataDir = FileSystem.Current.AppDataDirectory;
+
 		// Dependency-Injection Services
-		builder.Services.AddSingleton<PasswordManager>();
+		builder.Services.AddSingleton<PasswordManager>(s => 
+			new PasswordManager(appDataDir));
+		builder.Services.AddSingleton<PromptService>();
 		
 		// Dependency-Injection ViewModels
 		builder.Services.AddSingleton<LoginViewModel>();

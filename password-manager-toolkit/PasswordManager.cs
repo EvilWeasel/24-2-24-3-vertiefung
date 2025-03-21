@@ -5,11 +5,17 @@ namespace password_manager_toolkit;
 public class PasswordManager
 {
     private List<PasswordEntry> vault;
-    private const string vaultFilePath = "vault.cerberus";
-    private const string masterPassFilePath = "masterpass.cerberus";
+    private string vaultFilePath = "vault.cerberus";
+    private string masterPassFilePath = "masterpass.cerberus";
     public PasswordManager()
     {
         vault = [];
+    }
+    public PasswordManager(string appDataDir)
+    {
+        vault = [];
+        vaultFilePath = Path.Join(appDataDir, vaultFilePath);
+        masterPassFilePath = Path.Join(appDataDir, masterPassFilePath);
     }
     public IEnumerable<PasswordEntry> GetAll() => vault;
 

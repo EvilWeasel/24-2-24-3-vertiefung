@@ -12,13 +12,15 @@
             Text="Enter MasterPassword to Login"
             FontSize="Medium"/>
         <Entry Placeholder="P@ssword"
-               Text="{Binding InputMasterPassword}"/>
+               Text="{Binding InputMasterPassword}"
+               IsPassword="True"/>
         <Label Text="Confirm MasterPassword"
                FontSize="Medium"
                IsVisible="{Binding IsFirstStart}"/>
         <Entry Placeholder="P@ssword"
                Text="{Binding InputConfirmMasterPassword}"
-               IsVisible="{Binding IsFirstStart}"/>
+               IsVisible="{Binding IsFirstStart}"
+               IsPassword="True"/>
         <Button Text="Login"
                 FontSize="Medium"
                 Padding="15"

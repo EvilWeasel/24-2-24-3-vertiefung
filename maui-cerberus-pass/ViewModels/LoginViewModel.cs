@@ -29,17 +29,11 @@ public partial class LoginViewModel : BaseViewModel
             if (InputMasterPassword == InputConfirmMasterPassword)
             {
                 manager.SetupMasterPassword(InputMasterPassword);
+                manager.LoadVault(InputMasterPassword);
                 IsFirstStart = false;
                 InputMasterPassword = string.Empty;
                 InputConfirmMasterPassword = string.Empty;
                 await Shell.Current.GoToAsync(nameof(MainPage));
-            }
-            else
-            {
-                await Shell.Current.DisplayAlert(
-                    "Error",
-                    "Passwords do not match!",
-                    "Try again");
                 return;
             }
         }
@@ -47,17 +41,16 @@ public partial class LoginViewModel : BaseViewModel
         {
             if (manager.VerifyMasterPassword(InputMasterPassword))
             {
+                manager.LoadVault(InputMasterPassword);
                 InputMasterPassword = string.Empty;
                 await Shell.Current.GoToAsync(nameof(MainPage));
-            }
-            else
-            {
-                await Shell.Current.DisplayAlert(
-                    "Error",
-                    "Incorrect MasterPassword given!",
-                    "Try again");
                 return;
             }
         }
+        await Shell.Current.DisplayAlert(
+    "Error",
+    "Incorrect MasterPassword given!",
+    "Try again");
+        return;
     }
 }
