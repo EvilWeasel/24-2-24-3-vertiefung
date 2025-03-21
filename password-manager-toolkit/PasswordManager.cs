@@ -6,6 +6,7 @@ public class PasswordManager
 {
     private List<PasswordEntry> vault;
     private const string vaultFilePath = "vault.cerberus";
+    private const string masterPassFilePath = "masterpass.cerberus";
     public PasswordManager()
     {
         vault = [];
@@ -92,4 +93,29 @@ public class PasswordManager
         // ==> wenn "entweder" == null, dann ist x = "oder"
         // decrypt
     }
+
+    public void SetupMasterPassword(string plainMasterPass)
+    {
+        if (IsFirstStart)
+        {
+            var salt = String.Empty;
+            var hashedPassword 
+                = VaultEncryption.HashPassword(plainMasterPass, out salt);
+            File.WriteAllLines(masterPassFilePath, [hashedPassword, salt]);
+            // vault erstellen?
+        }
+    }
+
+    public bool VerifyMasterPassword(string plainMasterPass)
+    {
+        if (string.IsNullOrWhiteSpace(plainMasterPass))
+            return false;
+        var storedMasterPass = File.ReadAllLines(masterPassFilePath);
+        var storedHash = storedMasterPass[0];
+        var storedSalt = storedMasterPass[1];
+        return VaultEncryption.VerifyPassword(plainMasterPass, storedHash, storedSalt);
+    }
+    public bool IsFirstStart =>
+        !File.Exists(masterPassFilePath)
+        || string.IsNullOrWhiteSpace(File.ReadAllText(masterPassFilePath));
 }

@@ -11,15 +11,18 @@
         <Label 
             Text="Enter MasterPassword to Login"
             FontSize="Medium"/>
-        <Entry Placeholder="P@ssword" />
+        <Entry Placeholder="P@ssword"
+               Text="{Binding InputMasterPassword}"/>
         <Label Text="Confirm MasterPassword"
                FontSize="Medium"
-               IsVisible="True"/>
+               IsVisible="{Binding IsFirstStart}"/>
         <Entry Placeholder="P@ssword"
-               IsVisible="True"/>
+               Text="{Binding InputConfirmMasterPassword}"
+               IsVisible="{Binding IsFirstStart}"/>
         <Button Text="Login"
                 FontSize="Medium"
                 Padding="15"
-                FontAttributes="Bold"/>
+                FontAttributes="Bold"
+                Command="{Binding CheckMasterPassCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
