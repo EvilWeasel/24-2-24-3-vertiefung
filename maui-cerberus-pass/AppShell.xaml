@@ -4,12 +4,11 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:maui_cerberus_pass.Views"
-    Shell.FlyoutBehavior="Flyout"
-    Title="maui_cerberus_pass">
+    Shell.FlyoutBehavior="Disabled"
+    Title="CerberusPass">
 
     <ShellContent
         Shell.NavBarIsVisible="true"
-        Title="Home"
-        ContentTemplate="{DataTemplate views:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="Login" />
 </Shell>

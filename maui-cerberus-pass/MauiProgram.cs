@@ -24,11 +24,13 @@ public static class MauiProgram
 		builder.Services.AddSingleton<PasswordManager>();
 		
 		// Dependency-Injection ViewModels
+		builder.Services.AddSingleton<LoginViewModel>();
 		builder.Services.AddSingleton<MainViewModel>();
 		builder.Services.AddTransient<DetailsViewModel>();
 		builder.Services.AddTransient<AddEntryViewModel>();
 
 		// Dependency-Injection Views
+		builder.Services.AddSingleton<LoginPage>();
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddTransient<DetailsPage>();
 		builder.Services.AddTransient<AddEntryPage>();
