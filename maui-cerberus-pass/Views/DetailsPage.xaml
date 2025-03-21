@@ -44,12 +44,18 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Button Text="Save"
+                        Background="Green"
                         Grid.Column="0"
                         Command="{Binding UpdateEntryCommand}"/>
-                <Button Text="Go Back"
+                <Button Text="Delete"
+                        BackgroundColor="Red"
                         Grid.Column="1"
+                        Command="{Binding DeleteEntryCommand}"/>
+                <Button Text="Go Back"
+                        Grid.Column="2"
                         Command="{Binding NavigateBackCommand}" />
             </Grid>
         </Grid>

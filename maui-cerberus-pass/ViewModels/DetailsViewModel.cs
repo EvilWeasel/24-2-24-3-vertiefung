@@ -5,10 +5,11 @@ using password_manager_toolkit;
 namespace maui_cerberus_pass.ViewModels;
 
 [QueryProperty(nameof(Entry), "Entry")]
+[QueryProperty(nameof(TitleToChange), "TitleToChange")]
 public partial class DetailsViewModel : BaseViewModel
 {
     private const string masterpass = "P@ssword";
-    private string titleToChange = "";
+    public string TitleToChange { get; set; } = string.Empty;
     [ObservableProperty]
     PasswordEntry? entry;
 
@@ -30,8 +31,17 @@ public partial class DetailsViewModel : BaseViewModel
     {
         manager.UpdateEntry(
             masterpass,
-            Entry.Title,
+            TitleToChange,
             Entry);
+        await Shell.Current.GoToAsync("..?Refresh=True");
+    }
+
+    [RelayCommand]
+    public async Task DeleteEntry()
+    {
+        manager.DeleteEntry(
+            masterpass,
+            TitleToChange);
         await Shell.Current.GoToAsync("..?Refresh=True");
     }
 }
