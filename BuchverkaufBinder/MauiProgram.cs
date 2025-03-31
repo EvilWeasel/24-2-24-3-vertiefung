@@ -1,4 +1,5 @@
-﻿using BuchverkaufBinder.View;
+﻿using BuchverkaufBinder.Service;
+using BuchverkaufBinder.View;
 using BuchverkaufBinder.ViewModel;
 using Microsoft.Extensions.Logging;
 
@@ -22,6 +23,8 @@ namespace BuchverkaufBinder
             // Dependency-Injection ViewModels
             builder.Services.AddSingleton<BookCollectionViewModel>();
             builder.Services.AddSingleton<CategoryViewModel>();
+            // Dependency-Injection Services
+            builder.Services.AddSingleton<BookService>();
 
 
 #if DEBUG
