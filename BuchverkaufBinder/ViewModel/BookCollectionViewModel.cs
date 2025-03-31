@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using BuchverkaufBinder.Model;
 using BuchverkaufBinder.Service;
+using BuchverkaufBinder.View;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace BuchverkaufBinder.ViewModel;
 
@@ -18,5 +20,12 @@ public partial class BookCollectionViewModel : BaseViewModel
         this.bookService = bookService;
         Books = new ObservableCollection<Book>(
             bookService.GetBooks());
+    }
+
+    [RelayCommand]
+    public async Task GoToDetails()
+    {
+        //await Shell.Current.GoToAsync("BookDetailsView");
+        await Shell.Current.GoToAsync(nameof(BookDetailsView));
     }
 }

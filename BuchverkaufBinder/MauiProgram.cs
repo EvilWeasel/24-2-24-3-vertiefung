@@ -20,9 +20,11 @@ namespace BuchverkaufBinder
             // Dependency-Injection Views
             builder.Services.AddSingleton<BookCollectionView>();
             builder.Services.AddSingleton<CategoryView>();
+            builder.Services.AddTransient<BookDetailsView>();
             // Dependency-Injection ViewModels
             builder.Services.AddSingleton<BookCollectionViewModel>();
             builder.Services.AddSingleton<CategoryViewModel>();
+            builder.Services.AddTransient<BookDetailsViewModel>();
             // Dependency-Injection Services
             builder.Services.AddSingleton<BookService>();
 

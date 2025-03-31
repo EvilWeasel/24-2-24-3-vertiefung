@@ -6,16 +6,40 @@
              xmlns:model="clr-namespace:BuchverkaufBinder.Model"
              x:DataType="viewmodel:BookCollectionViewModel"
              Title="{Binding Title}">
-    <Grid>
+    <Grid RowDefinitions="*, auto"
+          Padding="15,15,0,15"
+          RowSpacing="10">
         <CollectionView ItemsSource="{Binding Books}">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical"
+                                   ItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Book">
-                    <VerticalStackLayout>
-                        <Label Text="{Binding Title}" />
-                        <Label Text="{Binding Author}" />
-                    </VerticalStackLayout>
+                    <Grid>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:BookCollectionViewModel}}, Path=GoToDetailsCommand}"/>
+                        </Grid.GestureRecognizers>
+                        <Border StrokeThickness="3"
+                            Stroke="{AppThemeBinding Dark={StaticResource PrimaryDark},
+                                Light={StaticResource Primary}}"
+                            StrokeShape="RoundRectangle 10"
+                            Margin="0,0,20,0">
+
+                            <VerticalStackLayout Spacing="5" Padding="10">
+                                <Label Text="{Binding Title}"
+                                       Style="{StaticResource Headline}"/>
+                                <Label Text="{Binding Author}"
+                                       Style="{StaticResource SubHeadline}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
+        <Button Text="Add Book"
+                Grid.Row="1"
+                Margin="0,0,15,0"/>
     </Grid>
 </ContentPage>
