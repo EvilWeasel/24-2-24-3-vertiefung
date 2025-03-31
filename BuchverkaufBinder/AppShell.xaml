@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BuchverkaufBinder.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:view="clr-namespace:BuchverkaufBinder.View"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Buchverkauf Binder">
+
+    <ShellContent
+        Title="Book Collection"
+        ContentTemplate="{DataTemplate view:BookCollectionView}"
+        Route="Books" />
+    <ShellContent
+        Title="Category View"
+        ContentTemplate="{DataTemplate view:CategoryView}"
+        Route="Categories" />
+</Shell>
