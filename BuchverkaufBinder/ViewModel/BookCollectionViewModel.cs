@@ -23,9 +23,27 @@ public partial class BookCollectionViewModel : BaseViewModel
     }
 
     [RelayCommand]
-    public async Task GoToDetails()
+    public async Task GoToDetails(Book bookParam)
     {
         //await Shell.Current.GoToAsync("BookDetailsView");
-        await Shell.Current.GoToAsync(nameof(BookDetailsView));
+        await Shell.Current.GoToAsync(nameof(BookDetailsView), true,
+            new Dictionary<string, object>
+            {
+                // "Key", Value
+                { "Book", new Book()
+                    {
+                        Title = bookParam.Title,
+                        Author = bookParam.Author,
+                        Category = bookParam.Category,
+                        ISBN = bookParam.ISBN,
+                        Price = bookParam.Price
+                    }
+                }
+            });
+    }
+    [RelayCommand]
+    public async Task GoToCreateDetails()
+    {
+        await Shell.Current.GoToAsync(nameof(BookDetailsView), true);
     }
 }

@@ -36,4 +36,9 @@ public class BookService
     }
 
     public List<Book> GetBooks() => books;
+
+    public void AddBook(Book newBook)
+    {
+        books.Add(newBook);
+    }
 }

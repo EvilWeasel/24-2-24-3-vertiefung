@@ -19,7 +19,8 @@
                     <Grid>
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:BookCollectionViewModel}}, Path=GoToDetailsCommand}"/>
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:BookCollectionViewModel}}, Path=GoToDetailsCommand}"
+                                CommandParameter="{Binding .}"/>
                         </Grid.GestureRecognizers>
                         <Border StrokeThickness="3"
                             Stroke="{AppThemeBinding Dark={StaticResource PrimaryDark},
@@ -40,6 +41,7 @@
         </CollectionView>
         <Button Text="Add Book"
                 Grid.Row="1"
-                Margin="0,0,15,0"/>
+                Margin="0,0,15,0"
+                Command="{Binding GoToCreateDetailsCommand}"/>
     </Grid>
 </ContentPage>
