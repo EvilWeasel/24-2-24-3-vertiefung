@@ -51,7 +51,10 @@
                      Command="{Binding SaveBookCommand}"/>
                 <Button Text="Delete"
                      BackgroundColor="Red"
-                     Grid.Column="1"/>
+                     Grid.Column="1"
+                     Command="{Binding DeleteBookCommand}"
+                     IsVisible="{Binding IsNotNew}"
+                     IsEnabled="{Binding IsNotNew}"/>
                 <Button Text="Go Back"
                      Grid.Column="2"
                      Command="{Binding GoBackCommand}" />

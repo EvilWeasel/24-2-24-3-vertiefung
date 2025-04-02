@@ -12,7 +12,9 @@ namespace BuchverkaufBinder.ViewModel;
 public partial class BookDetailsViewModel : BaseViewModel
 {
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsNotNew))]
     bool isNew = false;
+    public bool IsNotNew => !IsNew;
     [ObservableProperty]
     Book book;
     BookService bookService;
@@ -33,13 +35,17 @@ public partial class BookDetailsViewModel : BaseViewModel
     {
         if (IsNew)
             bookService.AddBook(Book);
-        //else
-        //bookService.UpdateBook();
+        else
+            bookService.UpdateBook(Book);
         await Shell.Current.GoToAsync(
             "..?Refresh=true");
     }
-    public void DeleteBook()
+    [RelayCommand]
+    public async Task DeleteBook()
     {
-
+        if (!IsNew)
+            bookService.DeleteBook(Book.Id);
+        await Shell.Current.GoToAsync(
+    "..?Refresh=true");
     }
 }

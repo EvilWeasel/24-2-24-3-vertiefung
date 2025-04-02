@@ -38,6 +38,7 @@ public partial class BookCollectionViewModel : BaseViewModel
                 // "Key", Value
                 { "Book", new Book()
                     {
+                        Id = bookParam.Id,
                         Title = bookParam.Title,
                         Author = bookParam.Author,
                         Category = bookParam.Category,
