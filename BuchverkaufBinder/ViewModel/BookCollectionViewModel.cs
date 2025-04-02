@@ -7,8 +7,14 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace BuchverkaufBinder.ViewModel;
 
+[QueryProperty(nameof(Refresh), "Refresh")]
 public partial class BookCollectionViewModel : BaseViewModel
 {
+    public bool Refresh
+    {
+        set 
+          => Books = new ObservableCollection<Book>(bookService.GetBooks());
+    }
     private BookService bookService;
 
     [ObservableProperty]
@@ -44,6 +50,7 @@ public partial class BookCollectionViewModel : BaseViewModel
     [RelayCommand]
     public async Task GoToCreateDetails()
     {
-        await Shell.Current.GoToAsync(nameof(BookDetailsView), true);
+        await Shell.Current.GoToAsync(
+            $"{nameof(BookDetailsView)}?IsNew=True", true);
     }
 }

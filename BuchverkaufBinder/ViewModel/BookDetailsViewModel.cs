@@ -1,18 +1,24 @@
-﻿using BuchverkaufBinder.Model;
+﻿using System.Threading.Tasks;
+using BuchverkaufBinder.Model;
 using BuchverkaufBinder.Service;
+using BuchverkaufBinder.View;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
 namespace BuchverkaufBinder.ViewModel;
 
+[QueryProperty(nameof(IsNew), "IsNew")]
 [QueryProperty(nameof(Book), "Book")]
 public partial class BookDetailsViewModel : BaseViewModel
 {
     [ObservableProperty]
-    Book? book;
+    bool isNew = false;
+    [ObservableProperty]
+    Book book;
     BookService bookService;
     public BookDetailsViewModel(BookService bookService)
     {
+        Book = new();
         Title = "Book Details";
         this.bookService = bookService;
     }
@@ -23,9 +29,14 @@ public partial class BookDetailsViewModel : BaseViewModel
         await Shell.Current.GoToAsync("..");
     }
     [RelayCommand]
-    public void SaveBook()
+    public async Task SaveBook()
     {
-        bookService.AddBook(Book);
+        if (IsNew)
+            bookService.AddBook(Book);
+        //else
+        //bookService.UpdateBook();
+        await Shell.Current.GoToAsync(
+            "..?Refresh=true");
     }
     public void DeleteBook()
     {
