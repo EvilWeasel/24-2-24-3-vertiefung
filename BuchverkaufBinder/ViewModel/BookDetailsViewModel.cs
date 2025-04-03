@@ -34,9 +34,9 @@ public partial class BookDetailsViewModel : BaseViewModel
     public async Task SaveBook()
     {
         if (IsNew)
-            bookService.AddBook(Book);
+            await bookService.AddBook(Book);
         else
-            bookService.UpdateBook(Book);
+            await bookService.UpdateBook(Book);
         await Shell.Current.GoToAsync(
             "..?Refresh=true");
     }
@@ -44,7 +44,7 @@ public partial class BookDetailsViewModel : BaseViewModel
     public async Task DeleteBook()
     {
         if (!IsNew)
-            bookService.DeleteBook(Book.Id);
+            await bookService.DeleteBook(Book.Id);
         await Shell.Current.GoToAsync(
     "..?Refresh=true");
     }

@@ -1,4 +1,5 @@
-﻿using BuchverkaufBinder.Data;
+﻿using System.Globalization;
+using BuchverkaufBinder.Data;
 using BuchverkaufBinder.Service;
 using BuchverkaufBinder.View;
 using BuchverkaufBinder.ViewModel;
@@ -39,6 +40,13 @@ namespace BuchverkaufBinder
             //});
             builder.Services.AddDbContext<BookContext>();
 
+            // Mit ','
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-DE");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-DE");
+
+            // Mit '.'
+            // CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-US");
+            // CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("en-US");
 
 #if DEBUG
             builder.Logging.AddDebug();

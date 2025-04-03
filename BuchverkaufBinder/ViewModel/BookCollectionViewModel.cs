@@ -12,8 +12,10 @@ public partial class BookCollectionViewModel : BaseViewModel
 {
     public bool Refresh
     {
-        set 
-          => Books = new ObservableCollection<Book>(bookService.GetBooks());
+        set
+        {
+            Books = [.. (bookService.GetBooks()).GetAwaiter().GetResult()];
+        }
     }
     private BookService bookService;
 
@@ -24,8 +26,8 @@ public partial class BookCollectionViewModel : BaseViewModel
     {
         Title = "Book Collection";
         this.bookService = bookService;
-        Books = new ObservableCollection<Book>(
-            bookService.GetBooks());
+        var books = bookService.GetBooks().GetAwaiter().GetResult();
+        Books = new ObservableCollection<Book>(books);
     }
 
     [RelayCommand]

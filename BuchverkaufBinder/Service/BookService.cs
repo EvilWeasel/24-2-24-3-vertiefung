@@ -22,20 +22,23 @@ public class BookService
         await context.SaveChangesAsync();
     }
 
-    public void UpdateBook(Book changedBook)
+    public async Task UpdateBook(Book changedBook)
     {
         var bookToUpdate
-            = books.Find(b => b.Id == changedBook.Id);
+            = context.Books.Find(changedBook.Id);
         bookToUpdate.Title = changedBook.Title;
         bookToUpdate.Price = changedBook.Price;
         bookToUpdate.Author = changedBook.Author;
         bookToUpdate.ISBN = changedBook.ISBN;
         bookToUpdate.Category = changedBook.Category;
+        await context.SaveChangesAsync();
     }
 
-    public void DeleteBook(int id)
+    public async Task DeleteBook(int id)
     {
-        var indexToRemove = books.FindIndex(b => b.Id == id);
-        books.RemoveAt(indexToRemove);
+        // context.Books.Remove(new Book(){ Id = id});
+        var bookToRemove = context.Books.Find(id);
+        context.Books.Remove(bookToRemove);
+        await context.SaveChangesAsync();
     }
 }
