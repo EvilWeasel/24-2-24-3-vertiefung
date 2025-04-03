@@ -33,6 +33,16 @@ public partial class BookDetailsViewModel : BaseViewModel
     [RelayCommand]
     public async Task SaveBook()
     {
+        Book.ValidateBook();
+        if (Book.HasErrors)
+        {
+            var message = string.Join(
+                Environment.NewLine,
+                Book.GetErrors().Select(e => e.ErrorMessage));
+            await Shell.Current.DisplayAlert("Error❗", message, "Okay 🙀");
+            return;
+        }
+        // check if cover exists
         if (IsNew)
             await bookService.AddBook(Book);
         else
