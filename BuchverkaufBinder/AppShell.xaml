@@ -15,4 +15,8 @@
         Title="Category View"
         ContentTemplate="{DataTemplate view:CategoryView}"
         Route="Categories" />
+    <ShellContent
+        Title="Validation Basics"
+        ContentTemplate="{DataTemplate view:ValidationBasicsView}"
+        Route="ValidationBasics" />
 </Shell>

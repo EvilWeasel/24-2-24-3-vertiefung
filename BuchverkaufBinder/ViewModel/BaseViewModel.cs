@@ -2,7 +2,7 @@
 
 namespace BuchverkaufBinder.ViewModel;
 
-public partial class BaseViewModel : ObservableObject
+public partial class BaseViewModel : ObservableValidator
 {
     [ObservableProperty]
     string title = "Default Title";
