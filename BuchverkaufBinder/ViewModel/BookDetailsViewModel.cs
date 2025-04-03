@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using BuchverkaufBinder.Model;
 using BuchverkaufBinder.Service;
 using BuchverkaufBinder.View;
@@ -18,11 +19,13 @@ public partial class BookDetailsViewModel : BaseViewModel
     [ObservableProperty]
     Book book;
     BookService bookService;
-    public BookDetailsViewModel(BookService bookService)
+    HttpClient httpClient;
+    public BookDetailsViewModel(BookService bookService, HttpClient httpClient)
     {
         Book = new();
         Title = "Book Details";
         this.bookService = bookService;
+        this.httpClient = httpClient;
     }
 
     [RelayCommand]
@@ -43,6 +46,12 @@ public partial class BookDetailsViewModel : BaseViewModel
             return;
         }
         // check if cover exists
+        var response = await httpClient.GetAsync($"https://covers.openlibrary.org/b/ISBN/{Book.ISBN}-L.jpg");
+        if (response?.Content?.Headers?.ContentType?.MediaType?.Contains("image") ?? false)
+            Book.ImageSourceUrl = $"https://covers.openlibrary.org/b/ISBN/{Book.ISBN}-L.jpg";
+        else
+            Book.ImageSourceUrl = "covernotavailable.png";
+
         if (IsNew)
             await bookService.AddBook(Book);
         else

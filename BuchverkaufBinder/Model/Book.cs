@@ -12,13 +12,12 @@ public partial class Book : ObservableValidator
     public string Author { get; set; }
     [Required]
     [MinLength(10)]
-    [MaxLength(13)]
+    [MaxLength(14)]
     public string ISBN { get; set; }
     public string Category { get; set; }
     [Required]
     public decimal Price { get; set; }
-    public string GetImageSourceUrlLarge
-        => $"https://covers.openlibrary.org/b/ISBN/{ISBN}-L.jpg";
+    public string ImageSourceUrl { get; set; } = "covernotavailable.png";
 
     public void ValidateBook()
     {

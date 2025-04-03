@@ -42,6 +42,9 @@ namespace BuchverkaufBinder
             //});
             builder.Services.AddDbContext<BookContext>();
 
+            // HTTP-Client
+            builder.Services.AddSingleton<HttpClient>();
+
             // Mit ','
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-DE");
             CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-DE");

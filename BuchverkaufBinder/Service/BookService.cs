@@ -31,6 +31,7 @@ public class BookService
         bookToUpdate.Author = changedBook.Author;
         bookToUpdate.ISBN = changedBook.ISBN;
         bookToUpdate.Category = changedBook.Category;
+        bookToUpdate.ImageSourceUrl = changedBook.ImageSourceUrl;
         await context.SaveChangesAsync();
     }
 

@@ -34,11 +34,13 @@
                                   ColumnSpacing="20">
                                 <Image SemanticProperties.Description="{Binding Title}"
                                        Grid.RowSpan="2"
-                                       HeightRequest="150">
-                                    <Image.Source>
+                                       HeightRequest="150"
+                                       Source="{Binding ImageSourceUrl}"
+                                       >
+                                    <!--<Image.Source>
                                         <UriImageSource CachingEnabled="True"
-                                                        Uri="{Binding GetImageSourceUrlLarge}"/>
-                                    </Image.Source>
+                                                        Uri="{Binding ImageSourceUrl}"/>
+                                    </Image.Source>-->
                                 </Image>
                                 <Label Text="{Binding Title}"
                                        Style="{StaticResource Headline}"
