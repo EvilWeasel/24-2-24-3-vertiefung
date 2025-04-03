@@ -5,7 +5,7 @@ namespace BuchverkaufBinder.Data;
 public class BookContext : DbContext
 {
     // 1 DbSet per Table
-    DbSet<Book> Books { get; set; }
+    public DbSet<Book> Books { get; set; }
     //DbSet<Authors> Authors { get; set; }
 
     public string DbPath { get; }

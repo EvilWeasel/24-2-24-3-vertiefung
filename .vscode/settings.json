@@ -1,0 +1,10 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "binderdb",
+      "database": "C:\\Users\\Tobia\\AppData\\Local\\binder.db"
+    }
+  ]
+}
