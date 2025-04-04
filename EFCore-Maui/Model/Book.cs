@@ -17,3 +17,4 @@ public class Book
     public string ImageSourceUrl { get; set; }
 
 }
+
