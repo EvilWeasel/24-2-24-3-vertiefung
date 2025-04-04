@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "singleton-demo", "singleton
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuchverkaufBinder", "BuchverkaufBinder\BuchverkaufBinder.csproj", "{20C2EE89-3D12-4D1E-94CA-9F828F359E5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFCore-Maui", "EFCore-Maui\EFCore-Maui.csproj", "{98B698D4-4146-4533-952A-021A776E2E8A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,11 @@ Global
 		{20C2EE89-3D12-4D1E-94CA-9F828F359E5A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{20C2EE89-3D12-4D1E-94CA-9F828F359E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20C2EE89-3D12-4D1E-94CA-9F828F359E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B698D4-4146-4533-952A-021A776E2E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B698D4-4146-4533-952A-021A776E2E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B698D4-4146-4533-952A-021A776E2E8A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{98B698D4-4146-4533-952A-021A776E2E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B698D4-4146-4533-952A-021A776E2E8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
